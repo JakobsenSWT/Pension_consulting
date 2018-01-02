@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Pension_consulting</string>
+
+    <string name="OK_text">OK</string>
+
+    <string-array name="contact_subjects">
+        <item>Uvildig Rådgivning</item>
+        <item>Pension Management</item>
+        <item>Udbud</item>
+        <item>Grænsegængere over Øresund</item>
+        <item>Piloter, Cabin attendants, lokomotivførere, balletdansere, mv.</item>
+        <item>Udstationering</item>
+    </string-array>
 </resources>
