@@ -45,10 +45,9 @@ public class Investment_Guide_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         if (!prefManager.isFirstTimeLaunch()) {
-            launchHomeScreen();
+            startfragment();
             finish();
         }
-
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
@@ -64,6 +63,7 @@ public class Investment_Guide_Activity extends AppCompatActivity {
         // add few more layouts if you want
         layouts = new int[]{
                 R.layout.frag_investment_intro};
+
 
         // adding bottom dots
         addBottomDots(0);
@@ -92,12 +92,10 @@ public class Investment_Guide_Activity extends AppCompatActivity {
                     // move to next screen
                     viewPager.setCurrentItem(current);
                 } else {
-                    launchHomeScreen();
+                    startfragment();
                 }
             }
         });
-
-        startfragment();
     }
 
     private void addBottomDots(int currentPage) {
@@ -209,8 +207,6 @@ public class Investment_Guide_Activity extends AppCompatActivity {
 
     public void startfragment() {
         if (prefManager.isFirstTimeLaunch()) {
-
-
 
             investment = new Investment_Question1_Fragment();
             getSupportFragmentManager().beginTransaction()
