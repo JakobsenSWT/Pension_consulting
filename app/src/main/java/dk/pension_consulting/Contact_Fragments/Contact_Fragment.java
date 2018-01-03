@@ -92,7 +92,7 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
 
         /* Fill it with Data */
         emailIntent.setType("plain/text");
-        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"jakobsen1608@hotmail.com"});
+        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"example@hotmail.com"});
         emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject:" + subject);
         emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Comment: " + comment + "From: " + name + " Mail: " + mail);
 
@@ -107,16 +107,16 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
 
         switch (ErrorType) {
             case 1:
-                dialog.setTitle("Missing Name!");
-                dialog.setMessage("You didn't enter a name");
+                dialog.setTitle(R.string.MissingName);
+                dialog.setMessage(getText(R.string.MissNameTxt));
                 break;
             case 2:
-                dialog.setTitle("Missing Mail!");
-                dialog.setMessage("You didn't enter a mail");
+                dialog.setTitle(R.string.MissingMail);
+                dialog.setMessage(getText(R.string.MissMailTxt));
                 break;
             case 3:
-                dialog.setTitle("Invalid Mail!" + name);
-                dialog.setMessage("You entered a false e-mail! \nPlease enter your e-mail");
+                dialog.setTitle(R.string.InvalidMail);
+                dialog.setMessage(getText(R.string.InvalidMailTxt));
                 break;
         }
 

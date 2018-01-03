@@ -9,11 +9,11 @@ import android.content.SharedPreferences;
 
 public class PrefManager {
 
-    SharedPreferences preferences;
-    SharedPreferences.Editor prefsEdit;
-    Context _context;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor prefsEdit;
+    private Context _context;
 
-    int PRIVATE_MODE = 0;
+    private int PRIVATE_MODE = 0;
 
     private static final String Pref_file_name = "Pension_consult";
     private static final String First_launch = "IsItFirstLaunch";
