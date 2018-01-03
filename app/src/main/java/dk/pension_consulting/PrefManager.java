@@ -15,22 +15,32 @@ public class PrefManager {
 
     private int PRIVATE_MODE = 0;
 
-    private static final String Pref_file_name = "Pension_consult";
-    private static final String First_launch = "IsItFirstLaunch";
+    private final String Pref_file_name = "Pension_consult";
+    private final String First_launch = "IsItFirstLaunch";
+    private final String Investment_Progress = "CurrentQuestion";
 
 
-    public PrefManager(Context context) {
+    PrefManager(Context context) {
         this._context = context;
-        preferences = _context.getSharedPreferences(Pref_file_name, PRIVATE_MODE);
+        preferences = this._context.getSharedPreferences(Pref_file_name, PRIVATE_MODE);
         prefsEdit = preferences.edit();
     }
 
-    public void setFirstTimeLaunch(boolean isFirstTime) {
+    void setFirstTimeLaunch (boolean isFirstTime) {
         prefsEdit.putBoolean(First_launch, isFirstTime);
         prefsEdit.commit();
     }
 
-    public boolean isFirstTimeLaunch() {
+    boolean isFirstTimeLaunch() {
         return preferences.getBoolean(First_launch, true);
+    }
+
+    void setInvestmentProgress (int currentProgress) {
+        prefsEdit.putInt(Investment_Progress, currentProgress);
+        prefsEdit.commit();
+    }
+
+    int investmentProgress() {
+        return preferences.getInt(Investment_Progress, 1);
     }
 }

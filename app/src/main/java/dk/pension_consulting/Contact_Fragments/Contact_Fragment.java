@@ -80,10 +80,10 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
         EditText setSubject = view.findViewById(R.id.etMail);
         EditText setComment = view.findViewById(R.id.etComment);
 
-        this.name = setName.getText().toString();
-        this.mail = setSubject.getText().toString();
-        this.subject = mySpinner.getSelectedItem().toString();
-        this.comment = setComment.getText().toString();
+        name = setName.getText().toString();
+        mail = setSubject.getText().toString();
+        subject = mySpinner.getSelectedItem().toString();
+        comment = setComment.getText().toString();
     }
 
     public void sendMessageWithIntent(View view) {

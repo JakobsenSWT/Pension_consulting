@@ -21,6 +21,6 @@ public class Contact_Activity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, contact).addToBackStack(null).commit();
 
-        setContentView(R.layout.frag_contact);
+        setContentView(R.layout.activity_contact_);
     }
 }
