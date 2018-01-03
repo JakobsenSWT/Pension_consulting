@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dk.pension_consulting">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,7 +20,7 @@
         </activity>
         <activity android:name=".News_Activity" />
         <activity android:name=".Investment_Guide_Activity" />
-        <activity android:name=".Contact_Activity"></activity>
+        <activity android:name=".Contact_Activity" />
     </application>
 
 </manifest>
