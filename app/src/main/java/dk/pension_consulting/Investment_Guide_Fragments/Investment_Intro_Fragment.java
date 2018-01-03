@@ -18,7 +18,7 @@ public class Investment_Intro_Fragment extends Fragment implements View.OnClickL
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_investment_4answers, container, false);
+        View view = inflater.inflate(R.layout.frag_investment_intro, container, false);
 
         startLayout();
         return view;
