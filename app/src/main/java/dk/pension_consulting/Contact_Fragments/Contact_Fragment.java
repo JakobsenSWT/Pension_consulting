@@ -48,6 +48,7 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
         if (view == sendButton) {
 
             setVariables(view);
+
             if (!name.equals("")) {
                 if (!mail.equals("")) {
                     //tjek mail
@@ -76,15 +77,13 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
 
     public void setVariables (View view) {
         EditText setName = view.findViewById(R.id.etName);
-        name = setName.getText().toString();
-
         EditText setSubject = view.findViewById(R.id.etMail);
-        mail = setSubject.getText().toString();
-
-        subject = mySpinner.getSelectedItem().toString();
-
         EditText setComment = view.findViewById(R.id.etComment);
-        comment = setComment.getText().toString();
+
+        this.name = setName.getText().toString();
+        this.mail = setSubject.getText().toString();
+        this.subject = mySpinner.getSelectedItem().toString();
+        this.comment = setComment.getText().toString();
     }
 
     public void sendMessageWithIntent(View view) {

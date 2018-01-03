@@ -6,6 +6,10 @@ import android.os.Bundle;
 
 import dk.pension_consulting.Investment_Guide_Fragments.*;
 
+/**
+ * Created by Thomas-PC on 2/01/2018.
+ */
+
 public class Investment_Guide_Activity extends AppCompatActivity {
 
     private final String IntroKey = "FirstLaunch";
