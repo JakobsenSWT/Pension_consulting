@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/question_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewR1"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/radioButton1"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="17dp"
+        android:layout_marginStart="35dp" />
+
+    <TextView
+        android:id="@+id/textViewR2"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewR1"
+        android:layout_marginEnd="11dp"
+        android:layout_toStartOf="@+id/radioButton3" />
+
+    <TextView
+        android:id="@+id/textViewR3"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewR2"
+        android:layout_alignBottom="@+id/textViewR2"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/question_textView" />
+
+    <TextView
+        android:id="@+id/textViewR4"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewR3"
+        android:layout_alignBottom="@+id/textViewR3"
+        android:layout_marginStart="27dp"
+        android:layout_toEndOf="@+id/textViewR3" />
+
+    <RadioButton
+        android:id="@+id/radioButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/previus_button"
+        android:layout_alignStart="@+id/previus_button"
+        android:layout_marginBottom="36dp" />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/radioButton1"
+        android:layout_alignBottom="@+id/radioButton1"
+        android:layout_marginEnd="25dp"
+        android:layout_toStartOf="@+id/question_textView"
+        android:buttonTint="@android:color/holo_blue_light" />
+
+    <RadioButton
+        android:id="@+id/radioButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/radioButton1"
+        android:layout_alignBottom="@+id/radioButton1"
+        android:layout_marginStart="25dp"
+        android:layout_toEndOf="@+id/question_textView"
+        android:buttonTint="@android:color/holo_blue_light" />
+
+    <RadioButton
+        android:id="@+id/radioButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/radioButton1"
+        android:layout_alignBottom="@+id/radioButton1"
+        android:layout_alignEnd="@+id/next_button"
+        android:buttonTint="@android:color/holo_blue_light" />
+
+    <Button
+        android:id="@+id/next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="36dp"
+        android:layout_marginEnd="50dp"
+        android:text="Next" />
+
+    <Button
+        android:id="@+id/previus_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/next_button"
+        android:layout_marginStart="50dp"
+        android:text="Back" />
+
+</RelativeLayout>
