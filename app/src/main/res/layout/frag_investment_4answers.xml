@@ -52,7 +52,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/previus_button"
         android:layout_alignStart="@+id/previus_button"
-        android:layout_marginBottom="36dp" />
+        android:layout_marginBottom="36dp"
+        android:buttonTint="@android:color/holo_blue_light"/>
 
     <RadioButton
         android:id="@+id/radioButton2"

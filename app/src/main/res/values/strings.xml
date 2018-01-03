@@ -6,6 +6,7 @@
     <string name="Previus">Tilbage</string>
     <string name="Exit">Home</string>
     <string name="GotIt">Got it!</string>
+    <string name="OK_text">OK</string>
     
     <string name="Slide_title">Boobies</string>
     <string name="Slide_desc">Boobies er life! Muhaha</string>
@@ -32,11 +33,12 @@
     <string name="Answer4_3">Noget</string>
     <string name="Answer4_4">Godt</string>
 
+
     <string name="OK_text">OK</string>
 
     <string name="Contact_txt">hej med fucking jer</string>
 
-    <string-array name="contact_subjects">
+  <string-array name="contact_subjects">
         <item>Uvildig Rådgivning</item>
         <item>Pension Management</item>
         <item>Udbud</item>
@@ -44,4 +46,15 @@
         <item>Piloter, Cabin attendants, lokomotivførere, balletdansere, mv.</item>
         <item>Udstationering</item>
     </string-array>
+
+    <string name="MissingName">Mangler navn!</string>
+    <string name="MissNameTxt">Du mangler at indtaste et navn.\n
+        Indtast venligst dit navn.</string>
+    <string name="MissingMail">Mangler mail adresse!</string>
+    <string name="MissMailTxt">Du mangler at indtaste din mail adresse.\n
+        Indtast venligst din email adresse.</string>
+    <string name="InvalidMail">Ugyldig mail adresse!</string>
+    <string name="InvalidMailTxt">Den mail du har indtastet er ugyldig.\n
+        Tjek venligst at den er indtastet korrekt.</string>
+
 </resources>
