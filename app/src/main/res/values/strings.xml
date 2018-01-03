@@ -2,9 +2,13 @@
     <string name="app_name">Pension_consulting</string>
 
     <string name="Next">Næste</string>
+    <string name="Skip">Skip</string>
     <string name="Previus">Tilbage</string>
     <string name="Exit">Home</string>
     <string name="GotIt">Got it!</string>
+    
+    <string name="Slide_title">Boobies</string>
+    <string name="Slide_desc">Boobies er life! Muhaha</string>
 
     <string name="Question1">Hvor stor betydning tror du din pensionsopsparing bliver for din samlede økonomi, når du går på pension?</string>
     <string name="Answer1_1">Ingen</string>
