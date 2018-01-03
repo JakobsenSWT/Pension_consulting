@@ -34,6 +34,8 @@
 
     <string name="OK_text">OK</string>
 
+    <string name="Contact_txt">hej med fucking jer</string>
+
     <string-array name="contact_subjects">
         <item>Uvildig Rådgivning</item>
         <item>Pension Management</item>
