@@ -13,6 +13,8 @@ public class News_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_);
+
+        startfragment();
     }
 
     public void startfragment() {
@@ -20,6 +22,6 @@ public class News_Activity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, news).addToBackStack(null).commit();
 
-        setContentView(R.layout.frag_news);
+        setContentView(R.layout.activity_news_);
     }
 }
