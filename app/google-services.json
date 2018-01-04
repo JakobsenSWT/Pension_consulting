@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "63608491171",
+    "firebase_url": "https://pensionconsult-84ffd.firebaseio.com",
+    "project_id": "pensionconsult-84ffd",
+    "storage_bucket": "pensionconsult-84ffd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:63608491171:android:a8e6ce3a55e8e776",
+        "android_client_info": {
+          "package_name": "com.example.jonathanlarsen.pensionconsultmainpage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "63608491171-n1e95i16fn2ha5fvca2j0f50igsn402f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPUFF1NQaLfjevasHlw6186KxY8gAwtsQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:63608491171:android:9ef212526813a5f3",
+        "android_client_info": {
+          "package_name": "dk.pension_consulting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "63608491171-eo2h615am0liib1cuccaqvctvf9ln42g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dk.pension_consulting",
+            "certificate_hash": "02a9f135fb0746e001e82663c18bd25b2f7d1bc1"
+          }
+        },
+        {
+          "client_id": "63608491171-n1e95i16fn2ha5fvca2j0f50igsn402f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPUFF1NQaLfjevasHlw6186KxY8gAwtsQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "63608491171-n1e95i16fn2ha5fvca2j0f50igsn402f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
