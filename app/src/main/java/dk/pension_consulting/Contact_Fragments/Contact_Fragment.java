@@ -18,11 +18,14 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import dk.pension_consulting.Contact_Activity;
 import dk.pension_consulting.R;
 
 public class Contact_Fragment extends Fragment implements View.OnClickListener {
 
-    String name, mail, subject, comment;
+    private String name, mail, subject, comment;
+
+    private EditText setName, setSubject, setComment;
 
     private Button sendButton;
     private Spinner mySpinner;
@@ -38,9 +41,13 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
 
         sendButton = view.findViewById(R.id.button2);
 
+        setName = view.findViewById(R.id.etName);
+        setSubject = view.findViewById(R.id.etMail);
+        setComment = view.findViewById(R.id.etComment);
+
         mySpinner = view.findViewById(R.id.spinner);
 
-        myAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.contact_subjects));
+        myAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.contact_subjects));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setAdapter(myAdapter);
 
@@ -52,17 +59,16 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
     public void onClick (View view) {
         if (view == sendButton) {
 
-            setVariables(view);
+            setVariables();
 
             if (!name.equals("")) {
                 if (!mail.equals("")) {
-                    //tjek mail
                     try {
                         String [] mailPart = mail.split("@");
                         if (mailPart[1].equalsIgnoreCase("hotmail.com") || mailPart[1].equalsIgnoreCase("gmail.com") ||
                                 mailPart[1].equalsIgnoreCase("live.dk") || mailPart[1].equalsIgnoreCase("yahoo.com")) {
 
-                            sendMessageWithIntent(view);
+                            sendMessageWithIntent();
                         }
                     } catch (Exception e) {
                         errorDialog(3).show();
@@ -80,28 +86,22 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
         sendButton.setOnClickListener(this);
     }
 
-    public void setVariables (View view) {
-        EditText setName = view.findViewById(R.id.etName);
-        EditText setSubject = view.findViewById(R.id.etMail);
-        EditText setComment = view.findViewById(R.id.etComment);
-
+    public void setVariables () {
         name = setName.getText().toString();
         mail = setSubject.getText().toString();
         subject = mySpinner.getSelectedItem().toString();
         comment = setComment.getText().toString();
     }
 
-    public void sendMessageWithIntent(View view) {
-        /* Create the Intent */
+    public void sendMessageWithIntent() {
+
         final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 
-        /* Fill it with Data */
         emailIntent.setType("plain/text");
         emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"example@hotmail.com"});
         emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject:" + subject);
         emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Comment: " + comment + "From: " + name + " Mail: " + mail);
 
-        /* Send it off to the Activity-Chooser */
         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
 
