@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -41,10 +42,13 @@ public class News_Adapter extends ArrayAdapter<TestAdapter> implements ValueEven
         LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = layoutInflater.inflate(R.layout.news_test, parent, false);
 
-        TextView article = rowView.findViewById(R.id.title_view);
+        TextView articleTitle = rowView.findViewById(R.id.title_view);
+        TextView articleDate = rowView.findViewById(R.id.textViewDate);
+        ImageView articlePicture = rowView.findViewById(R.id.imageViewPic);
 
-        article.setText(test.title);
-
+        String url = test.url;
+        articleTitle.setText(test.title);
+        articleDate.setText(test.date);
 
 
         return rowView;
@@ -54,7 +58,6 @@ public class News_Adapter extends ArrayAdapter<TestAdapter> implements ValueEven
     public void onDataChange(DataSnapshot dataSnapshot) {
         this.clear();
         for (DataSnapshot child : dataSnapshot.getChildren()) {
-
             this.add(child.getValue(TestAdapter.class));
         }
     }

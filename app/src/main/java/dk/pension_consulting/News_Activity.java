@@ -5,9 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import dk.pension_consulting.News_Fragments.*;
-public class News_Activity extends AppCompatActivity {
 
-    private Fragment news;
+public class News_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +17,7 @@ public class News_Activity extends AppCompatActivity {
     }
 
     public void startfragment() {
-        news = new News_Fragment();
+        Fragment news = new News_Fragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, news).addToBackStack(null).commit();
 

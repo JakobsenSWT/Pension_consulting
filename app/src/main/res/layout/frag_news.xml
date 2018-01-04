@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context="dk.pension_consulting.News_Fragments.News_Fragment"
     xmlns:tools="http://schemas.android.com/tools">
-
 
     <ListView
         android:id="@+id/listView"
@@ -12,4 +12,5 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         tools:listitem="@layout/news_test"/>
+
 </RelativeLayout>

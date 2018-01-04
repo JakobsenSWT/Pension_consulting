@@ -21,6 +21,10 @@ import android.widget.TextView;
 import dk.pension_consulting.Contact_Activity;
 import dk.pension_consulting.R;
 
+/**
+ * Created by Thomas-PC on 2/01/2018.
+ */
+
 public class Contact_Fragment extends Fragment implements View.OnClickListener {
 
     private String name, mail, subject, comment;

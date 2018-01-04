@@ -10,4 +10,6 @@ public class TestAdapter {
 
     public String title;
     public String url;
+    public String date;
+    public String picUrl;
 }

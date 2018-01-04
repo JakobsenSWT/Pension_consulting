@@ -2,18 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <!--  <TextView
+      <TextView
           xmlns:android="http://schemas.android.com/apk/res/android"
-          android:id="@+id/title_view"
+          android:id="@+id/example_view"
           android:layout_width="match_parent"
           android:text="title"
           android:textSize="18dp"
           android:textStyle="italic"
           android:padding="16dp"
-          android:layout_height="wrap_content"
-          />
+          android:layout_height="wrap_content" />
 
-  -->
+
       <ImageView
           android:id="@+id/imageViewPic"
           android:layout_width="64dp"
@@ -34,7 +33,7 @@
           android:id="@+id/textViewDate"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_below="@+id/textViewTitle"
+          android:layout_below="@+id/title_view"
           android:text="date"
           android:textSize="12dp"
           android:gravity="right"
