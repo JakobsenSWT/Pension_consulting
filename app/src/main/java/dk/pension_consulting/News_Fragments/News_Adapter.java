@@ -45,6 +45,8 @@ public class News_Adapter extends ArrayAdapter<TestAdapter> implements ValueEven
 
         article.setText(test.title);
 
+
+
         return rowView;
     }
 

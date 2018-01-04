@@ -33,7 +33,17 @@
     <string name="Answer4_3">Noget</string>
     <string name="Answer4_4">Godt</string>
 
-    <string name="Contact_txt">hej med fucking jer</string>
+    <string name="Contact_txt">
+        <![CDATA[
+        <big>
+        Kontakt mig for et uforpligtende møde på: <br> <br>
+        Tlf: +45 26 11 45 58 <br> <br>
+        Eller: <br> <br>
+        Bliv kontaktet
+        </big>
+        ]]>
+    </string>
+
 
   <string-array name="contact_subjects">
         <item>Uvildig Rådgivning</item>
