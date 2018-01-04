@@ -1,3 +1,67 @@
 <resources>
     <string name="app_name">Pension_consulting</string>
+
+    <string name="Next">Næste</string>
+    <string name="Skip">Skip</string>
+    <string name="Previus">Tilbage</string>
+    <string name="Exit">Home</string>
+    <string name="GotIt">Got it!</string>
+    <string name="OK_text">OK</string>
+    
+    <string name="Slide_title">Boobies</string>
+    <string name="Slide_desc">Boobies er life! Muhaha</string>
+
+    <string name="Question1">Hvor stor betydning tror du din pensionsopsparing bliver for din samlede økonomi, når du går på pension?</string>
+    <string name="Answer1_1">Ingen</string>
+    <string name="Answer1_2">Lille</string>
+    <string name="Answer1_3">Nogen</string>
+    <string name="Answer1_4">Stor</string>
+
+    <string name="Question2">Lægger du mere vægt på muligheden for højt afkast end på sikkerhed for hvor meget, du når at spare op?
+        Et lille afkast tilbyder en høj sikkerhed.</string>
+    <string name="Answer2_1">Højt</string>
+    <string name="Answer2_2">Middel</string>
+    <string name="Answer2_3">Lille</string>
+
+    <string name="Question3">Kan du leve med, at du på et år kan miste f.eks. 20% af hele din opsparing, hvis aktierne falder drastisk?</string>
+    <string name="Answer3_1">Nej</string>
+    <string name="Answer3_2">Ja</string>
+
+    <string name="Question4">Hvor godt kender du til handel med værdipapirer og investeringer?</string>
+    <string name="Answer4_1">Intet</string>
+    <string name="Answer4_2">Lidt</string>
+    <string name="Answer4_3">Noget</string>
+    <string name="Answer4_4">Godt</string>
+
+    <string name="Contact_txt">
+        <![CDATA[
+        <big>
+        Kontakt mig for et uforpligtende møde på: <br> <br>
+        Tlf: +45 26 11 45 58 <br> <br>
+        Eller: <br> <br>
+        Bliv kontaktet
+        </big>
+        ]]>
+    </string>
+
+
+  <string-array name="contact_subjects">
+        <item>Uvildig Rådgivning</item>
+        <item>Pension Management</item>
+        <item>Udbud</item>
+        <item>Grænsegængere over Øresund</item>
+        <item>Piloter, Cabin attendants, lokomotivførere, balletdansere, mv.</item>
+        <item>Udstationering</item>
+    </string-array>
+
+    <string name="MissingName">Mangler navn!</string>
+    <string name="MissNameTxt">Du mangler at indtaste et navn.\n
+        Indtast venligst dit navn.</string>
+    <string name="MissingMail">Mangler mail adresse!</string>
+    <string name="MissMailTxt">Du mangler at indtaste din mail adresse.\n
+        Indtast venligst din email adresse.</string>
+    <string name="InvalidMail">Ugyldig mail adresse!</string>
+    <string name="InvalidMailTxt">Den mail du har indtastet er ugyldig.\n
+        Tjek venligst at den er indtastet korrekt.</string>
+
 </resources>
