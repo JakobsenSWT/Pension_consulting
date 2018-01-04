@@ -68,7 +68,7 @@
             android:layout_below="@+id/etComment"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="51dp"
-            android:text="Button" />
+            android:text="Send" />
 
         <TextView
             android:id="@+id/textView2"
