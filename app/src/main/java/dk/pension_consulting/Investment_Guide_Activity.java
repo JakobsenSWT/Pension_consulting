@@ -21,18 +21,18 @@ public class Investment_Guide_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_investment_guide_);
 
         prefManager = new PrefManager(this);
-        prefManager.setFirstTimeLaunch(true);
+//        prefManager.setFirstTimeLaunch(true);
 
         startfragment();
     }
 
     public void startfragment() {
-        if (prefManager.isFirstTimeLaunch()) {
+/*        if (prefManager.isFirstTimeLaunch()) {
             investment = new Investment_Intro_Fragment();
             prefManager.setFirstTimeLaunch(false);
         } else {
-
-            switch (prefManager.investmentProgress()) {
+*/
+            switch (prefManager.getInvestmentProgress()) {
                 case 1:
                     investment = new Investment_Question1_Fragment();
                     break;
@@ -42,7 +42,7 @@ public class Investment_Guide_Activity extends AppCompatActivity {
 
                 case 4:
             }
-        }
+ //       }
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, investment).addToBackStack(null).commit();

@@ -18,18 +18,18 @@ import dk.pension_consulting.R;
  * Created by Thomas-PC on 2/01/2018.
  */
 
-public class Investment_Question1_Fragment extends Fragment implements View.OnClickListener {
+public class Investment_Question4_Fragment extends Fragment implements View.OnClickListener {
 
     private PrefManager prefManager;
 
-    private Fragment Question2;
+    private Fragment result_frag;
 
     private TextView Question;
     private RadioButton Answer1, Answer2, Answer3, Answer4;
     private Button previus, next;
     private ProgressBar Bar;
 
-    private int InvestmentValue;
+    private int InvestmentKnowledge;
 
     @Nullable
     @Override
@@ -56,32 +56,32 @@ public class Investment_Question1_Fragment extends Fragment implements View.OnCl
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.radioButton1:
-                this.InvestmentValue = 1;
+                this.InvestmentKnowledge = 1;
                 break;
             case R.id.radioButton2:
-                this.InvestmentValue = 2;
+                this.InvestmentKnowledge = 2;
                 break;
             case R.id.radioButton3:
-                this.InvestmentValue = 3;
+                this.InvestmentKnowledge = 3;
                 break;
             case R.id.radioButton4:
-                this.InvestmentValue = 4;
+                this.InvestmentKnowledge = 4;
                 break;
             case R.id.previus_button:
                 break;
             case R.id.next_button:
-                prefManager.setInvestmentValue1(this.InvestmentValue);
+                prefManager.setInvestmentKnowledge(InvestmentKnowledge);
                 goToNextPage();
                 break;
         }
     }
 
     public void startLayout () {
-        Question.setText(R.string.Question1);
-        Answer1.setText(R.string.Answer1_1);
-        Answer2.setText(R.string.Answer1_2);
-        Answer3.setText(R.string.Answer1_3);
-        Answer4.setText(R.string.Answer1_4);
+        Question.setText(R.string.Question4);
+        Answer1.setText(R.string.Answer4_1);
+        Answer2.setText(R.string.Answer4_2);
+        Answer3.setText(R.string.Answer4_3);
+        Answer4.setText(R.string.Answer4_4);
 
         previus.setText(R.string.Exit);
         next.setText(R.string.Next);
@@ -96,9 +96,9 @@ public class Investment_Question1_Fragment extends Fragment implements View.OnCl
     }
 
     public void goToNextPage () {
-        Question2 = new Investment_Question2_Fragment();
+        result_frag = new Investment_Result_Fragment();
 
         getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, Question2).commit();
+                .replace(R.id.fragment_container, result_frag).commit();
     }
 }
