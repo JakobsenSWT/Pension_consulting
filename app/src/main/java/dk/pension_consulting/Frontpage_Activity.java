@@ -12,7 +12,7 @@ import github.hellocsl.cursorwheel.CursorWheelLayout;
 
 public class Frontpage_Activity extends AppCompatActivity implements View.OnClickListener {
 
-    Button News, Test, Contact;
+    Button News, Test, Contact, settings;
 
 
     @Override
@@ -29,6 +29,8 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
         Contact = findViewById(R.id.ContactButton);
         Contact.setOnClickListener(this);
 
+        settings = findViewById(R.id.button9);
+        settings.setOnClickListener(this);
 
     }
 
@@ -49,6 +51,12 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
         else if (view == Contact)
         {
             Intent i= new Intent(this, Contact_Activity.class);
+            startActivity(i);
+        }
+
+        else if (view == settings)
+        {
+            Intent i= new Intent(this, Settings_Activity.class);
             startActivity(i);
         }
     }

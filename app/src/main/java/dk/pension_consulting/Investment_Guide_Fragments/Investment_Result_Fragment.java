@@ -62,14 +62,15 @@ public class Investment_Result_Fragment extends Fragment implements View.OnClick
                 + (prefManager.getInvestmentValue3() * 57))
                     / 100;
 
+        //ToDo add strings in values/Strings
         if (this.result > 3.48) {
-
+            resultText.setText("Meget lav investeringsprofil");
         } else if (this.result <= 3.48 && this.result > 3.15) {
-
+            resultText.setText("Forsigtig investeringsprofil");
         } else if (this.result <= 3.15 && this.result > 2.84) {
-
+            resultText.setText("Gennemsnitlig investeringsprofil");
         } else if (this.result < 2.84) {
-
+            resultText.setText("Risikobetonet investeringsprofil");
         }
 
         prefManager.setInvestmentResult(result);
