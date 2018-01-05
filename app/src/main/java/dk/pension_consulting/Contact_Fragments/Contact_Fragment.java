@@ -55,6 +55,8 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setAdapter(myAdapter);
 
+        retrieveData(savedInstanceState);
+
         startLayout();
 
         return view;
@@ -94,7 +96,18 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
         name = setName.getText().toString();
         mail = setSubject.getText().toString();
         subject = mySpinner.getSelectedItem().toString();
-        comment = setComment.getText().toString();
+        comment += setComment.getText().toString();
+    }
+
+    public void retrieveData (Bundle dataMap) {
+        if (dataMap != null) {
+            String s = dataMap.getString("Result_score");
+            int i = dataMap.getInt("Investment_experience");
+
+            comment = "Result score: " + s +
+                    "\nInvestment experience: " + i +
+                    "\n\n";
+        }
     }
 
     public void sendMessageWithIntent() {

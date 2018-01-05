@@ -27,7 +27,7 @@ public class Investment_Guide_Activity extends AppCompatActivity {
     }
 
     public void startfragment() {
-/*        if (prefManager.isFirstTimeLaunch()) {
+/*        if (prefManager.getIsFirstTimeLaunch()) {
             investment = new Investment_Intro_Fragment();
             prefManager.setFirstTimeLaunch(false);
         } else {
@@ -41,8 +41,8 @@ public class Investment_Guide_Activity extends AppCompatActivity {
                 case 3:
 
                 case 4:
-            }
- //       }
+//            }
+        }
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, investment).addToBackStack(null).commit();

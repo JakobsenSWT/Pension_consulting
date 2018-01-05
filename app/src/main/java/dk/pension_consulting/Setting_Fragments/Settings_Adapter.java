@@ -23,7 +23,7 @@ public class Settings_Adapter extends ArrayAdapter <String> {
 
     private ArrayList <String> data;
     private Switch aSwitch;
-    Context context;
+    private Context context;
 
     public Settings_Adapter(@NonNull Context context, int resource, ArrayList<String> data) {
         super(context, resource, data);
@@ -31,6 +31,7 @@ public class Settings_Adapter extends ArrayAdapter <String> {
         this.data = data;
     }
 
+    @NonNull
     @Override
     public View getView (int position, @Nullable View view, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -38,7 +39,7 @@ public class Settings_Adapter extends ArrayAdapter <String> {
 
         TextView settings_title = rowView.findViewById(R.id.title_textView);
 
-        final Switch aSwitch = rowView.findViewById(R.id.settings_switch);
+        aSwitch = rowView.findViewById(R.id.settings_switch);
         if (position == 0) {
             aSwitch.setVisibility(View.VISIBLE);
             aSwitch.setOnClickListener(new View.OnClickListener() {

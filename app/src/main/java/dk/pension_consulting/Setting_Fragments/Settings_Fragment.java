@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import dk.pension_consulting.PrefManager;
 import dk.pension_consulting.R;
 
 /**
@@ -19,6 +20,8 @@ import dk.pension_consulting.R;
  */
 
 public class Settings_Fragment extends Fragment implements AdapterView.OnItemClickListener {
+
+    private PrefManager prefManager;
 
     public ListView listView;
     public ArrayList <String> list = new ArrayList<String>() {{
@@ -32,6 +35,8 @@ public class Settings_Fragment extends Fragment implements AdapterView.OnItemCli
     @Override
     public View onCreateView (LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstance) {
         View view = inflater.inflate(R.layout.listview, container, false);
+
+        prefManager = new PrefManager(this.getActivity());
 
         listView = view.findViewById(R.id.listView);
 
@@ -48,6 +53,8 @@ public class Settings_Fragment extends Fragment implements AdapterView.OnItemCli
 
         switch (position) {
             case 1:
+                prefManager.setFirstTimeLaunch(true);
+
                 Toast.makeText(this.getActivity(), "Clicked",
                         Toast.LENGTH_SHORT).show();
                 break;
