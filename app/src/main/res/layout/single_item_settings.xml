@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textStyle="italic"
-        android:padding="20dp" />
+        android:padding="25dp" />
 
     <Switch
         android:id="@+id/settings_switch"

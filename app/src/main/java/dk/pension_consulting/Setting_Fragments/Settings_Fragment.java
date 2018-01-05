@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -30,11 +31,11 @@ public class Settings_Fragment extends Fragment implements AdapterView.OnItemCli
     @Nullable
     @Override
     public View onCreateView (LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstance) {
-        View view = inflater.inflate(R.layout.frag_news, container, false);
+        View view = inflater.inflate(R.layout.listview, container, false);
 
         listView = view.findViewById(R.id.listView);
 
-        ListViewAdapter adapter = new ListViewAdapter(this.getActivity(), R.layout.single_item_settings, list);
+        Settings_Adapter adapter = new Settings_Adapter(this.getActivity(), R.layout.single_item_settings, list);
         listView.setAdapter(adapter);
 
         startLayout();
@@ -43,6 +44,18 @@ public class Settings_Fragment extends Fragment implements AdapterView.OnItemCli
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+        switch (position) {
+            case 1:
+                Toast.makeText(this.getActivity(), "Clicked",
+                        Toast.LENGTH_SHORT).show();
+                break;
+            case 2:
+                Toast.makeText(this.getActivity(), "Clicked",
+                        Toast.LENGTH_SHORT).show();
+                break;
+        }
 
     }
 

@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,7 +17,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import dk.pension_consulting.R;
 
@@ -26,10 +24,10 @@ import dk.pension_consulting.R;
  * Created by Thomas-PC on 3/01/2018.
  */
 
-public class News_Adapter extends ArrayAdapter<TestAdapter> implements ValueEventListener {
+public class News_Adapter extends ArrayAdapter<News_Item_Values> implements ValueEventListener {
 
     public News_Adapter(@NonNull Context context) {
-        super(context, -1,  new ArrayList<TestAdapter>());
+        super(context, -1,  new ArrayList<News_Item_Values>());
 
         DatabaseReference articleRef = FirebaseDatabase.getInstance().getReference("example");
         articleRef.addValueEventListener(this);
@@ -38,9 +36,9 @@ public class News_Adapter extends ArrayAdapter<TestAdapter> implements ValueEven
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        TestAdapter test = getItem(position);
+        News_Item_Values test = getItem(position);
         LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = layoutInflater.inflate(R.layout.news_test, parent, false);
+        View rowView = layoutInflater.inflate(R.layout.single_item_news, parent, false);
 
         TextView articleTitle = rowView.findViewById(R.id.title_view);
         TextView articleDate = rowView.findViewById(R.id.textViewDate);
@@ -58,7 +56,7 @@ public class News_Adapter extends ArrayAdapter<TestAdapter> implements ValueEven
     public void onDataChange(DataSnapshot dataSnapshot) {
         this.clear();
         for (DataSnapshot child : dataSnapshot.getChildren()) {
-            this.add(child.getValue(TestAdapter.class));
+            this.add(child.getValue(News_Item_Values.class));
         }
     }
 
