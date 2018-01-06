@@ -23,6 +23,7 @@ public class Investment_Question4_Fragment extends Fragment implements View.OnCl
     private PrefManager prefManager;
 
     private Fragment result_frag;
+    private Fragment Question3;
 
     private TextView Question;
     private RadioButton Answer1, Answer2, Answer3, Answer4;
@@ -68,10 +69,15 @@ public class Investment_Question4_Fragment extends Fragment implements View.OnCl
                 this.InvestmentKnowledge = 4;
                 break;
             case R.id.previus_button:
+                goToPreviousPage();
                 break;
             case R.id.next_button:
-                prefManager.setInvestmentKnowledge(InvestmentKnowledge);
-                goToNextPage();
+                if (verifyAnswers()) {
+                    prefManager.setInvestmentKnowledge(InvestmentKnowledge);
+                    goToNextPage();
+                } else {
+                    //Error dialog
+                }
                 break;
         }
     }
@@ -95,10 +101,29 @@ public class Investment_Question4_Fragment extends Fragment implements View.OnCl
         next.setOnClickListener(this);
     }
 
+    public boolean verifyAnswers() {
+        if (this.InvestmentKnowledge == 0
+                || prefManager.getInvestmentValue1() == 0
+                || prefManager.getInvestmentValue2() == 0
+                || prefManager.getInvestmentValue3() == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public void goToPreviousPage () {
+        Question3 = new Investment_Question3_Fragment();
+
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, Question3).commit();
+    }
+
     public void goToNextPage () {
         result_frag = new Investment_Result_Fragment();
 
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, result_frag).commit();
+
     }
 }

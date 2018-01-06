@@ -1,9 +1,11 @@
 package dk.pension_consulting.Investment_Guide_Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -11,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import dk.pension_consulting.Frontpage_Activity;
 import dk.pension_consulting.PrefManager;
 import dk.pension_consulting.R;
 
@@ -68,6 +71,7 @@ public class Investment_Question1_Fragment extends Fragment implements View.OnCl
                 this.InvestmentValue = 4;
                 break;
             case R.id.previus_button:
+                goToPreviousPage();
                 break;
             case R.id.next_button:
                 prefManager.setInvestmentValue1(this.InvestmentValue);
@@ -93,6 +97,13 @@ public class Investment_Question1_Fragment extends Fragment implements View.OnCl
 
         previus.setOnClickListener(this);
         next.setOnClickListener(this);
+    }
+
+    public void goToPreviousPage () {
+        getActivity().getSupportFragmentManager().popBackStack();
+
+        Intent i = new Intent(this.getActivity(), Frontpage_Activity.class);
+        startActivity(i);
     }
 
     public void goToNextPage () {
