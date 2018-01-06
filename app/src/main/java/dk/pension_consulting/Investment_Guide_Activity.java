@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,16 +31,12 @@ public class Investment_Guide_Activity extends AppCompatActivity {
 
     private PrefManager prefManager;
 
-    private Fragment investment;
-
-    private Toolbar toolbar;
     private TabLayout tabLayout;
-    private ViewPager viewPagerFragment;
-
-    private Button next, skip;
+    private Button next, previous;
     private LinearLayout dotsLayout;
     private TextView [] dots;
     private ViewPager viewPagerIntro;
+    private ViewPager viewPagerFragment;
     private MyViewPagerAdapter myViewPagerAdapter;
 
     private int [] layout;
@@ -53,12 +48,10 @@ public class Investment_Guide_Activity extends AppCompatActivity {
 
         prefManager = new PrefManager(this);
 
+        next = findViewById(R.id.next_button);
+        previous = findViewById(R.id.previous_button);
+
         if (!prefManager.getIsFirstTimeLaunch()) {
-
-            toolbar = findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
             viewPagerFragment = findViewById(R.id.view_pager);
             setupViewPager(viewPagerFragment);
@@ -66,15 +59,32 @@ public class Investment_Guide_Activity extends AppCompatActivity {
             tabLayout = findViewById(R.id.tabs);
             tabLayout.setupWithViewPager(viewPagerFragment);
 
+            previous.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //ToDo
+                }
+            });
+
+            next.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //ToDo
+                }
+            });
+
+
         } else {
 
+            prefManager.setFirstTimeLaunch(false);
+
+            tabLayout = findViewById(R.id.tabs);
             viewPagerIntro = findViewById(R.id.view_pager);
             dotsLayout = findViewById(R.id.layoutDots);
-            next = findViewById(R.id.next_button);
-            skip = findViewById(R.id.skip_button);
+
+            tabLayout.setVisibility(View.GONE);
 
             layout = new int[] {
-                R.layout.frag_investment_intro,
                 R.layout.frag_investment_intro,
                 R.layout.frag_investment_intro
             };
@@ -85,10 +95,9 @@ public class Investment_Guide_Activity extends AppCompatActivity {
             viewPagerIntro.setAdapter(myViewPagerAdapter);
             viewPagerIntro.addOnPageChangeListener(viewPagerPageChangeListener);
 
-            skip.setOnClickListener(new View.OnClickListener() {
+            previous.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    prefManager.setFirstTimeLaunch(false);
                     finish();
                     startActivity(getIntent());
                 }
@@ -101,7 +110,6 @@ public class Investment_Guide_Activity extends AppCompatActivity {
                     if (current < layout.length) {
                         viewPagerIntro.setCurrentItem(current);
                     } else {
-                        prefManager.setFirstTimeLaunch(false);
                         finish();
                         startActivity(getIntent());
                     }
@@ -180,10 +188,10 @@ public class Investment_Guide_Activity extends AppCompatActivity {
 
             if (position == layout.length - 1) {
                 next.setText(getString(R.string.GotIt));
-                skip.setVisibility(View.GONE);
+                previous.setVisibility(View.GONE);
             } else {
                 next.setText(getString(R.string.Next));
-                skip.setVisibility(View.VISIBLE);
+                previous.setVisibility(View.VISIBLE);
             }
         }
 

@@ -22,14 +22,12 @@ public class Investment_Question3_Fragment extends Fragment implements View.OnCl
 
     private PrefManager prefManager;
 
-    private Fragment Question4;
-
     private TextView Question;
     private RadioButton Answer1, Answer2;
-    private Button previus, next;
-    private ProgressBar Bar;
 
-    private int InvestmentValue3;
+    public Investment_Question3_Fragment () {
+
+    }
 
     @Nullable
     @Override
@@ -43,9 +41,6 @@ public class Investment_Question3_Fragment extends Fragment implements View.OnCl
         Answer1 = view.findViewById(R.id.radioButton1);
         Answer2 = view.findViewById(R.id.radioButton2);
 
-        previus = view.findViewById(R.id.previus_button);
-        next = view.findViewById(R.id.next_button);
-
         startLayout();
         return view;
     }
@@ -54,16 +49,10 @@ public class Investment_Question3_Fragment extends Fragment implements View.OnCl
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.radioButton1:
-                this.InvestmentValue3 = 5;
+                prefManager.setInvestmentValue3(5);
                 break;
             case R.id.radioButton2:
-                this.InvestmentValue3 = 3;
-                break;
-            case R.id.previus_button:
-                break;
-            case R.id.next_button:
-                prefManager.setInvestmentValue3(InvestmentValue3);
-                goToNextPage();
+                prefManager.setInvestmentValue3(3);
                 break;
         }
     }
@@ -73,20 +62,7 @@ public class Investment_Question3_Fragment extends Fragment implements View.OnCl
         Answer1.setText(R.string.Answer3_1);
         Answer2.setText(R.string.Answer3_2);
 
-        previus.setText(R.string.Exit);
-        next.setText(R.string.Next);
-
         Answer1.setOnClickListener(this);
         Answer2.setOnClickListener(this);
-
-        previus.setOnClickListener(this);
-        next.setOnClickListener(this);
-    }
-
-    public void goToNextPage () {
-        Question4 = new Investment_Question4_Fragment();
-
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, Question4).commit();
     }
 }

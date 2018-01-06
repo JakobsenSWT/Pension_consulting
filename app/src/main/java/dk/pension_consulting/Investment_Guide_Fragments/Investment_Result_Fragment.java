@@ -27,7 +27,7 @@ public class Investment_Result_Fragment extends Fragment implements View.OnClick
     private Fragment contact;
 
     private TextView resultText;
-    private Button previus, next;
+    private Button previous, next;
     private ProgressBar Bar;
 
     private float result;
@@ -41,7 +41,7 @@ public class Investment_Result_Fragment extends Fragment implements View.OnClick
 
         resultText = view.findViewById(R.id.textView3);
 
-        previus = view.findViewById(R.id.previus_button);
+        previous = view.findViewById(R.id.previous_button);
         next = view.findViewById(R.id.next_button);
 
         startLayout();
@@ -51,7 +51,7 @@ public class Investment_Result_Fragment extends Fragment implements View.OnClick
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.previus_button:
+            case R.id.previous_button:
                 goToFrontpage();
                 break;
             case R.id.next_button:
@@ -61,7 +61,7 @@ public class Investment_Result_Fragment extends Fragment implements View.OnClick
     }
 
     public void startLayout () {
-        previus.setText(R.string.Previus);
+        previous.setText(R.string.Previus);
         next.setText(R.string.Next);
 
         this.result = ((prefManager.getInvestmentValue1() * 17)
@@ -82,7 +82,7 @@ public class Investment_Result_Fragment extends Fragment implements View.OnClick
 
         prefManager.setInvestmentResult(result);
 
-        previus.setOnClickListener(this);
+        previous.setOnClickListener(this);
         next.setOnClickListener(this);
     }
 
