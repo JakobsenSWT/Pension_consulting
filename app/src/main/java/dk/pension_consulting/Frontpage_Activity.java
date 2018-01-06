@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import github.hellocsl.cursorwheel.CursorWheelLayout;
 
 
 public class Frontpage_Activity extends AppCompatActivity implements View.OnClickListener {

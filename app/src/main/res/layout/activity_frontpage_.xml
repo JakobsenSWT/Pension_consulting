@@ -5,9 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="dk.pension_consulting.Frontpage_Activity">
+    tools:context="dk.pension_consulting.Frontpage_Activity"
+    tools:layout_editor_absoluteY="25dp">
 
-    <!--
+
+    <com.ogaclejapan.arclayout.ArcLayout
+        android:id="@+id/arc_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:arc_axisRadius="250dp"
+        app:arc_color="#FFFF"
+        app:arc_freeAngle="false"
+        app:arc_origin="left"
+        app:arc_radius="250dp"
+        app:arc_reverseAngle="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <!--
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
@@ -19,44 +35,143 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/pension_consult_logo" />
     -->
+
+
+        <ImageButton
+            android:id="@+id/news_btn"
+
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape"
+
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text=""
+            android:textColor="#FF1C1C"
+            android:textSize="30sp"
+            app:srcCompat="@drawable/ic_guide"
+            tools:layout_editor_absoluteX="151dp"
+            tools:layout_editor_absoluteY="397dp" />
+
+        <ImageButton
+            android:id="@+id/contact_btn"
+
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape"
+
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text=""
+            android:textColor="#FF1C1C"
+            android:textSize="30sp"
+            app:srcCompat="@drawable/ic_guide"
+            tools:layout_editor_absoluteX="197dp"
+            tools:layout_editor_absoluteY="289dp" />
+
+        <ImageButton
+            android:id="@+id/settings_btn"
+
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape"
+
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text=""
+            android:textColor="#FF1C1C"
+            android:textSize="30sp"
+            app:srcCompat="@drawable/ic_guide"
+            tools:layout_editor_absoluteX="187dp"
+            tools:layout_editor_absoluteY="138dp" />
+
+        <ImageButton
+            android:id="@+id/disp_btn"
+
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape"
+
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text=""
+            android:textColor="#FF1C1C"
+            android:textSize="30sp"
+            app:srcCompat="@drawable/ic_guide"
+            tools:layout_editor_absoluteX="111dp"
+            tools:layout_editor_absoluteY="44dp" />
+
+    </com.ogaclejapan.arclayout.ArcLayout>
+
+    <ImageButton
+        android:id="@+id/guide_btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/buttonshapeguide"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:textColor="#FF1C1C"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498"
+        app:srcCompat="@drawable/ic_guide" />
+
     <Button
         android:id="@+id/NewsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="143dp"
-        android:layout_marginTop="146dp"
+        android:layout_marginBottom="240dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="241dp"
         android:text="News"
-        app:layout_constraintBottom_toBottomOf="@+id/ContactButton"
-        app:layout_constraintEnd_toEndOf="@+id/ContactButton"
-        app:layout_constraintStart_toStartOf="@+id/ContactButton"
+        app:layout_constraintBottom_toBottomOf="@+id/button9"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/TestButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:layout_marginRight="16dp"
         android:text="Test"
-        app:layout_constraintBottom_toBottomOf="@+id/NewsButton"
-        app:layout_constraintEnd_toEndOf="@+id/button9"
-        app:layout_constraintStart_toStartOf="@+id/button9"
-        app:layout_constraintTop_toTopOf="@+id/NewsButton" />
+        app:layout_constraintBottom_toTopOf="@+id/button9"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/ContactButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="230dp"
-        android:layout_marginStart="55dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="31dp"
         android:text="Contact"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NewsButton" />
 
     <Button
         android:id="@+id/button9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="38dp"
+        android:layout_marginRight="16dp"
         android:text="Button"
-        app:layout_constraintBaseline_toBaselineOf="@+id/ContactButton"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
 </android.support.constraint.ConstraintLayout>
