@@ -34,6 +34,15 @@ public class Investment_Question1_Fragment extends Fragment implements View.OnCl
 
     private int InvestmentValue;
 
+    public Investment_Question1_Fragment () {
+
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
