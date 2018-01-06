@@ -4,59 +4,126 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context="dk.pension_consulting.Frontpage_Activity">
+    android:background="#FFFF"
+    tools:context="dk.pension_consulting.Frontpage_Activity"
+    tools:layout_editor_absoluteY="25dp">
 
-    <!--
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginHorizontal="5dp"
-            android:layout_marginTop="0dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/pension_consult_logo" />
-    -->
-    <Button
-        android:id="@+id/NewsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="143dp"
-        android:layout_marginTop="146dp"
-        android:text="News"
-        app:layout_constraintBottom_toBottomOf="@+id/ContactButton"
-        app:layout_constraintEnd_toEndOf="@+id/ContactButton"
-        app:layout_constraintStart_toStartOf="@+id/ContactButton"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/TestButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test"
-        app:layout_constraintBottom_toBottomOf="@+id/NewsButton"
-        app:layout_constraintEnd_toEndOf="@+id/button9"
-        app:layout_constraintStart_toStartOf="@+id/button9"
-        app:layout_constraintTop_toTopOf="@+id/NewsButton" />
-
-    <Button
-        android:id="@+id/ContactButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="230dp"
-        android:layout_marginStart="55dp"
-        android:text="Contact"
+    <com.ogaclejapan.arclayout.ArcLayout
+        android:id="@+id/arc_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:arc_axisRadius="150dp"
+        app:arc_color="#bfbfbf"
+        app:arc_freeAngle="false"
+        app:arc_origin="center_horizontal"
+        app:arc_radius="150dp"
+        app:arc_reverseAngle="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="51dp"
-        android:text="Button"
-        app:layout_constraintBaseline_toBaselineOf="@+id/ContactButton"
-        app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageButton
+            android:id="@+id/contact_btn"
+
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape"
+
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text=""
+            android:textSize="30sp"
+            app:srcCompat="@drawable/ic_contact"
+            tools:layout_editor_absoluteX="197dp"
+            tools:layout_editor_absoluteY="289dp" />
+
+        <ImageButton
+            android:id="@+id/disp_btn"
+
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape"
+
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text=""
+            android:textSize="30sp"
+            app:srcCompat="@drawable/ic_bonds"
+            tools:layout_editor_absoluteX="111dp"
+            tools:layout_editor_absoluteY="44dp" />
+
+        <ImageButton
+            android:id="@+id/settings_btn"
+
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape"
+
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text=""
+            android:textSize="30sp"
+            app:srcCompat="@drawable/ic_settings"
+            tools:layout_editor_absoluteX="187dp"
+            tools:layout_editor_absoluteY="138dp" />
+
+        <ImageButton
+            android:id="@+id/news_btn"
+
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape"
+
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text=""
+            android:textSize="30sp"
+            app:srcCompat="@drawable/ic_news"
+            tools:layout_editor_absoluteX="151dp"
+            tools:layout_editor_absoluteY="397dp" />
+
+    </com.ogaclejapan.arclayout.ArcLayout>
+
+    <ImageButton
+        android:id="@+id/guide_btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/buttonshapeguide"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498"
+        app:srcCompat="@drawable/ic_guide" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pension_consult_logo" />
+
+
 </android.support.constraint.ConstraintLayout>

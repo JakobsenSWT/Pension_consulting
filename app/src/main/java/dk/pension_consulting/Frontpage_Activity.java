@@ -5,14 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
-import github.hellocsl.cursorwheel.CursorWheelLayout;
 
 
 public class Frontpage_Activity extends AppCompatActivity implements View.OnClickListener {
 
-    Button News, Test, Contact, settings;
+    ImageButton News, Test, Contact, settings;
 
 
     @Override
@@ -20,16 +20,16 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frontpage_);
 
-        News = findViewById(R.id.NewsButton);
+        News = findViewById(R.id.news_btn);
         News.setOnClickListener(this);
 
-        Test = findViewById(R.id.TestButton);
+        Test = findViewById(R.id.guide_btn);
         Test.setOnClickListener(this);
 
-        Contact = findViewById(R.id.ContactButton);
+        Contact = findViewById(R.id.contact_btn);
         Contact.setOnClickListener(this);
 
-        settings = findViewById(R.id.button9);
+        settings = findViewById(R.id.settings_btn);
         settings.setOnClickListener(this);
 
     }
