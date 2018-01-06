@@ -1,5 +1,7 @@
 package dk.pension_consulting.Investment_Guide_Fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -76,7 +78,18 @@ public class Investment_Question4_Fragment extends Fragment implements View.OnCl
                     prefManager.setInvestmentKnowledge(InvestmentKnowledge);
                     goToNextPage();
                 } else {
-                    //Error dialog
+                    AlertDialog dialog = new AlertDialog.Builder(v.getContext())
+                            .create();
+                    dialog.setCancelable(false);
+                    dialog.setTitle(getString(R.string.Error_title));
+                    dialog.setMessage(getString(R.string.Error_missingAll));
+                    dialog.setButton(v.getContext().getString(R.string.OK_text), new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.show();
                 }
                 break;
         }

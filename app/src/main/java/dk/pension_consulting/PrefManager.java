@@ -83,17 +83,9 @@ public class PrefManager {
         prefsEdit.commit();
     }
 
-    public float getInvestmentKnowledge () {
-        return preferences.getFloat(Investment_Knowledge, 0);
-    }
-
     public void setInvestmentResult (float value) {
         prefsEdit.putFloat(Investment_Result, value);
         prefsEdit.commit();
-    }
-
-    public float getInvestmentResult () {
-        return preferences.getFloat(Investment_Result, 0);
     }
 
 }
