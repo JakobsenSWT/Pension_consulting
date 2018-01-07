@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -31,15 +32,22 @@ public class Investment_Guide_Activity extends AppCompatActivity {
 
     private PrefManager prefManager;
 
+    private Fragment result_frag;
+
     private TabLayout tabLayout;
-    private Button next, previous;
     private LinearLayout dotsLayout;
+
+    private Button next, previous;
     private TextView [] dots;
+    private ProgressBar progressBar;
+
     private ViewPager viewPagerIntro;
     private ViewPager viewPagerFragment;
-    private MyViewPagerAdapter myViewPagerAdapter;
+    private ViewPagerAdapter viewPagerAdapter;
+    private FragmentViewPagerAdapter fragmentViewPagerAdapter;
 
     private int [] layout;
+    private int current;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,28 +56,57 @@ public class Investment_Guide_Activity extends AppCompatActivity {
 
         prefManager = new PrefManager(this);
 
+        progressBar = findViewById(R.id.progressBar);
+
         next = findViewById(R.id.next_button);
         previous = findViewById(R.id.previous_button);
 
+        tabLayout = findViewById(R.id.tabs);
+
         if (!prefManager.getIsFirstTimeLaunch()) {
 
-            viewPagerFragment = findViewById(R.id.view_pager);
-            setupViewPager(viewPagerFragment);
+            previous.setVisibility(View.GONE);
 
-            tabLayout = findViewById(R.id.tabs);
+            viewPagerFragment = findViewById(R.id.view_pager);
+            fragmentViewPagerAdapter = new FragmentViewPagerAdapter(getSupportFragmentManager());
+                fragmentViewPagerAdapter.addFragment(new Investment_Question1_Fragment(), "ONE");
+                fragmentViewPagerAdapter.addFragment(new Investment_Question2_Fragment(), "TWO");
+                fragmentViewPagerAdapter.addFragment(new Investment_Question3_Fragment(), "THREE");
+                fragmentViewPagerAdapter.addFragment(new Investment_Question4_Fragment(), "FOUR");
+            viewPagerFragment.setAdapter(fragmentViewPagerAdapter);
+            viewPagerFragment.addOnPageChangeListener(viewPagerPageChangeListenerFragment);
+
             tabLayout.setupWithViewPager(viewPagerFragment);
 
             previous.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //ToDo
+                    current = viewPagerFragment.getCurrentItem();
+                    if (current < 1) {
+
+                    } else if (current < fragmentViewPagerAdapter.getCount()) {
+                        viewPagerFragment.setCurrentItem(current - 1);
+                    } else {
+                        finish();
+                        Intent i = new Intent(getBaseContext(), Frontpage_Activity.class);
+                        startActivity(i);
+                    }
                 }
             });
 
             next.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //ToDo
+                    current = viewPagerFragment.getCurrentItem();
+                    if (current < fragmentViewPagerAdapter.getCount()) {
+                        viewPagerFragment.setCurrentItem(current + 1);
+                        progressBar.setProgress(InvestmentProgress());
+                    } else {
+                        result_frag = new Investment_Result_Fragment();
+
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.fragment_container, result_frag).commit();
+                    }
                 }
             });
 
@@ -78,11 +115,8 @@ public class Investment_Guide_Activity extends AppCompatActivity {
 
             prefManager.setFirstTimeLaunch(false);
 
-            tabLayout = findViewById(R.id.tabs);
             viewPagerIntro = findViewById(R.id.view_pager);
             dotsLayout = findViewById(R.id.layoutDots);
-
-            tabLayout.setVisibility(View.GONE);
 
             layout = new int[] {
                 R.layout.frag_investment_intro,
@@ -91,9 +125,12 @@ public class Investment_Guide_Activity extends AppCompatActivity {
 
             addBottomDots(0);
 
-            myViewPagerAdapter = new MyViewPagerAdapter();
-            viewPagerIntro.setAdapter(myViewPagerAdapter);
-            viewPagerIntro.addOnPageChangeListener(viewPagerPageChangeListener);
+            viewPagerAdapter = new ViewPagerAdapter();
+            viewPagerIntro.setAdapter(viewPagerAdapter);
+            viewPagerIntro.addOnPageChangeListener(viewPagerPageChangeListenerIntro);
+
+            progressBar.setVisibility(View.GONE);
+            tabLayout.setVisibility(View.GONE);
 
             previous.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -106,7 +143,7 @@ public class Investment_Guide_Activity extends AppCompatActivity {
             next.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int current = getItem(+1);
+                    current = getItem(+1);
                     if (current < layout.length) {
                         viewPagerIntro.setCurrentItem(current);
                     } else {
@@ -119,20 +156,57 @@ public class Investment_Guide_Activity extends AppCompatActivity {
         }
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Investment_Question1_Fragment(), "ONE");
-        adapter.addFragment(new Investment_Question2_Fragment(), "TWO");
-        adapter.addFragment(new Investment_Question3_Fragment(), "THREE");
-        adapter.addFragment(new Investment_Question4_Fragment(), "FOUR");
-        viewPager.setAdapter(adapter);
+    //Fragments
+    public int InvestmentProgress () {
+        prefManager.setInvestmentProgress(0);
+
+        if (prefManager.getInvestmentValue1() != 0) {
+            prefManager.setInvestmentProgress(1);
+        }
+        if (prefManager.getInvestmentValue2() != 0) {
+            prefManager.setInvestmentProgress(1);
+        }
+        if (prefManager.getInvestmentValue3() != 0) {
+            prefManager.setInvestmentProgress(1);
+        }
+        if (prefManager.getInvestmentKnowledge() != 0) {
+            prefManager.setInvestmentProgress(1);
+        }
+
+        return prefManager.getInvestmentProgress();
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
+    ViewPager.OnPageChangeListener viewPagerPageChangeListenerFragment = new ViewPager.OnPageChangeListener() {
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            progressBar.setProgress(InvestmentProgress());
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            if (position == 0) {
+                previous.setVisibility(View.GONE);
+            } else if (position == fragmentViewPagerAdapter.getCount()) {
+                next.setText("Afslut");
+                previous.setVisibility(View.VISIBLE);
+            } else {
+                next.setText(R.string.Next);
+                previous.setVisibility(View.VISIBLE);
+            }
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+    };
+
+    private class FragmentViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager) {
+        public FragmentViewPagerAdapter(FragmentManager manager) {
             super(manager);
         }
 
@@ -157,6 +231,11 @@ public class Investment_Guide_Activity extends AppCompatActivity {
         }
     }
 
+    //Intro
+    private int getItem(int i) {
+        return viewPagerIntro.getCurrentItem() + i;
+    }
+
     private void addBottomDots(int currentPage) {
         dots = new TextView[layout.length];
 
@@ -176,11 +255,12 @@ public class Investment_Guide_Activity extends AppCompatActivity {
             dots[currentPage].setTextColor(colorsActive[0]);
     }
 
-    private int getItem(int i) {
-        return viewPagerIntro.getCurrentItem() + i;
-    }
+    ViewPager.OnPageChangeListener viewPagerPageChangeListenerIntro = new ViewPager.OnPageChangeListener() {
 
-    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
 
         @Override
         public void onPageSelected(int position) {
@@ -196,20 +276,15 @@ public class Investment_Guide_Activity extends AppCompatActivity {
         }
 
         @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
-
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int arg0) {
+        public void onPageScrollStateChanged(int state) {
 
         }
     };
 
-    public class MyViewPagerAdapter extends PagerAdapter {
+    private class ViewPagerAdapter extends PagerAdapter {
         private LayoutInflater layoutInflater;
 
-        public MyViewPagerAdapter() {
+        public ViewPagerAdapter() {
         }
 
         @Override
@@ -231,7 +306,6 @@ public class Investment_Guide_Activity extends AppCompatActivity {
         public boolean isViewFromObject(View view, Object obj) {
             return view == obj;
         }
-
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {

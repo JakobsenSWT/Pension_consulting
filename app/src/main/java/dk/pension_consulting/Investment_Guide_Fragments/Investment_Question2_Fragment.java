@@ -50,13 +50,13 @@ public class Investment_Question2_Fragment extends Fragment implements View.OnCl
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.radioButton1:
-                prefManager.setInvestmentValue1(2);
+                prefManager.setInvestmentValue2(2);
                 break;
             case R.id.radioButton2:
-                prefManager.setInvestmentValue1(3);
+                prefManager.setInvestmentValue2(3);
                 break;
             case R.id.radioButton3:
-                prefManager.setInvestmentValue1(4);
+                prefManager.setInvestmentValue2(4);
                 break;
         }
     }

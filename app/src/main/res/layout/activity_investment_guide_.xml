@@ -16,12 +16,23 @@
             android:layout_height="wrap_content"
             app:tabMode="fixed"
             app:tabGravity="fill"/>
+
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layoutDots"
+        android:layout_marginBottom="10dp"
+        style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
+        android:max="4"
+        android:progress="0"/>
 
     <LinearLayout
         android:id="@+id/layoutDots"
