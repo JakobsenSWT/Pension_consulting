@@ -54,6 +54,10 @@ public class Settings_Fragment extends Fragment implements AdapterView.OnItemCli
         switch (position) {
             case 1:
                 prefManager.setFirstTimeLaunch(true);
+                prefManager.setInvestmentValue1(0);
+                prefManager.setInvestmentValue2(0);
+                prefManager.setInvestmentValue3(0);
+                prefManager.setInvestmentKnowledge(0);
 
                 Toast.makeText(this.getActivity(), "Clicked",
                         Toast.LENGTH_SHORT).show();

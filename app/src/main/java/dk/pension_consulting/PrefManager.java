@@ -43,7 +43,10 @@ public class PrefManager {
     }
 
     public void setInvestmentProgress (int currentProgress) {
-        prefsEdit.putInt(Investment_Progress, currentProgress);
+        if (currentProgress == 0) {
+            prefsEdit.putInt(Investment_Progress, currentProgress);
+        } else
+            prefsEdit.putInt(Investment_Progress, preferences.getInt(Investment_Progress, currentProgress) + 1);
         prefsEdit.commit();
     }
 
@@ -79,8 +82,12 @@ public class PrefManager {
     }
 
     public void setInvestmentKnowledge (int value) {
-        prefsEdit.putFloat(Investment_Knowledge, value);
+        prefsEdit.putInt(Investment_Knowledge, value);
         prefsEdit.commit();
+    }
+
+    public int getInvestmentKnowledge () {
+        return preferences.getInt(Investment_Knowledge, 0);
     }
 
     public void setInvestmentResult (float value) {
