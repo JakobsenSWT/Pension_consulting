@@ -1,12 +1,15 @@
 <resources>
-    <string name="app_name">Pension_consulting</string>
+    <string name="app_name">Gruppe 10 Pension</string>
+    <string name="Investment_Header">Investerings Guide</string>
 
     <string name="Next">Næste</string>
     <string name="Skip">Skip</string>
     <string name="Previus">Tilbage</string>
     <string name="Exit">Home</string>
-    <string name="GotIt">Got it!</string>
+    <string name="Finish">Afslut</string>
+    <string name="GotIt">Klar!</string>
     <string name="OK_text">OK</string>
+    <string name="About">About</string>
 
     <string name="Error_title">Ups!</string>
     <string name="Error_missing1">Du mangler at svare på et spørgsmål</string>
