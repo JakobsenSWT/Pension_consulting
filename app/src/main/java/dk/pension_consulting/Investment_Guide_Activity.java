@@ -9,15 +9,20 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +39,7 @@ public class Investment_Guide_Activity extends AppCompatActivity {
 
     private Fragment result_frag;
 
+    private Toolbar toolbar;
     private TabLayout tabLayout;
     private LinearLayout dotsLayout;
 
@@ -44,7 +50,7 @@ public class Investment_Guide_Activity extends AppCompatActivity {
     private ViewPager viewPagerIntro;
     private ViewPager viewPagerFragment;
     private ViewPagerAdapter viewPagerAdapter;
-    private FragmentViewPagerAdapter fragmentViewPagerAdapter;
+    private Investment_ViewPagerAdapter_Fragment fragmentViewPagerAdapter;
 
     private int [] layout;
     private int current;
@@ -56,25 +62,32 @@ public class Investment_Guide_Activity extends AppCompatActivity {
 
         prefManager = new PrefManager(this);
 
+        toolbar = findViewById(R.id.toolbar_actionbar);
+        tabLayout = findViewById(R.id.tabs);
         progressBar = findViewById(R.id.progressBar);
-
         next = findViewById(R.id.next_button);
         previous = findViewById(R.id.previous_button);
 
-        tabLayout = findViewById(R.id.tabs);
+        next.setText(R.string.Next);
 
         if (!prefManager.getIsFirstTimeLaunch()) {
 
             previous.setVisibility(View.GONE);
+            previous.setText(R.string.Previus);
 
             viewPagerFragment = findViewById(R.id.view_pager);
-            fragmentViewPagerAdapter = new FragmentViewPagerAdapter(getSupportFragmentManager());
-                fragmentViewPagerAdapter.addFragment(new Investment_Question1_Fragment(), "ONE");
-                fragmentViewPagerAdapter.addFragment(new Investment_Question2_Fragment(), "TWO");
-                fragmentViewPagerAdapter.addFragment(new Investment_Question3_Fragment(), "THREE");
-                fragmentViewPagerAdapter.addFragment(new Investment_Question4_Fragment(), "FOUR");
+            fragmentViewPagerAdapter = new Investment_ViewPagerAdapter_Fragment(getSupportFragmentManager());
+                fragmentViewPagerAdapter.addFragment(new Investment_Question1_Fragment(), "EN");
+                fragmentViewPagerAdapter.addFragment(new Investment_Question2_Fragment(), "TO");
+                fragmentViewPagerAdapter.addFragment(new Investment_Question3_Fragment(), "TRE");
+                fragmentViewPagerAdapter.addFragment(new Investment_Question4_Fragment(), "FIRE");
             viewPagerFragment.setAdapter(fragmentViewPagerAdapter);
             viewPagerFragment.addOnPageChangeListener(viewPagerPageChangeListenerFragment);
+
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setTitle(R.string.Investment_Header);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
 
             tabLayout.setupWithViewPager(viewPagerFragment);
 
@@ -118,6 +131,8 @@ public class Investment_Guide_Activity extends AppCompatActivity {
             viewPagerIntro = findViewById(R.id.view_pager);
             dotsLayout = findViewById(R.id.layoutDots);
 
+            previous.setText(R.string.Skip);
+
             layout = new int[] {
                 R.layout.frag_investment_intro,
                 R.layout.frag_investment_intro
@@ -129,8 +144,9 @@ public class Investment_Guide_Activity extends AppCompatActivity {
             viewPagerIntro.setAdapter(viewPagerAdapter);
             viewPagerIntro.addOnPageChangeListener(viewPagerPageChangeListenerIntro);
 
-            progressBar.setVisibility(View.GONE);
+            toolbar.setVisibility(View.GONE);
             tabLayout.setVisibility(View.GONE);
+            progressBar.setVisibility(View.GONE);
 
             previous.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -187,11 +203,11 @@ public class Investment_Guide_Activity extends AppCompatActivity {
         public void onPageSelected(int position) {
             if (position == 0) {
                 previous.setVisibility(View.GONE);
-            } else if (position == fragmentViewPagerAdapter.getCount()) {
-                next.setText("Afslut");
+            } else if (position <= fragmentViewPagerAdapter.getCount()) {
+                next.setText(R.string.Next);
                 previous.setVisibility(View.VISIBLE);
             } else {
-                next.setText(R.string.Next);
+                next.setText(R.string.Finish);
                 previous.setVisibility(View.VISIBLE);
             }
         }
@@ -202,11 +218,11 @@ public class Investment_Guide_Activity extends AppCompatActivity {
         }
     };
 
-    private class FragmentViewPagerAdapter extends FragmentPagerAdapter {
+    public class Investment_ViewPagerAdapter_Fragment extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public FragmentViewPagerAdapter(FragmentManager manager) {
+        public Investment_ViewPagerAdapter_Fragment(FragmentManager manager) {
             super(manager);
         }
 
@@ -315,8 +331,13 @@ public class Investment_Guide_Activity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
     public void onBackPressed() {
-        Intent i = new Intent(this, Frontpage_Activity.class);
-        startActivity(i);
+        finish();
     }
 }
