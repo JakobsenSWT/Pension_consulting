@@ -77,10 +77,10 @@ public class Investment_Guide_Activity extends AppCompatActivity {
 
             viewPagerFragment = findViewById(R.id.view_pager);
             fragmentViewPagerAdapter = new Investment_ViewPagerAdapter_Fragment(getSupportFragmentManager());
-                fragmentViewPagerAdapter.addFragment(new Investment_Question1_Fragment(), "EN");
-                fragmentViewPagerAdapter.addFragment(new Investment_Question2_Fragment(), "TO");
-                fragmentViewPagerAdapter.addFragment(new Investment_Question3_Fragment(), "TRE");
-                fragmentViewPagerAdapter.addFragment(new Investment_Question4_Fragment(), "FIRE");
+                fragmentViewPagerAdapter.addFragment(new Investment_Question1_Fragment(), "I");
+                fragmentViewPagerAdapter.addFragment(new Investment_Question2_Fragment(), "II");
+                fragmentViewPagerAdapter.addFragment(new Investment_Question3_Fragment(), "III");
+                fragmentViewPagerAdapter.addFragment(new Investment_Question4_Fragment(), "IV");
             viewPagerFragment.setAdapter(fragmentViewPagerAdapter);
             viewPagerFragment.addOnPageChangeListener(viewPagerPageChangeListenerFragment);
 
@@ -101,8 +101,6 @@ public class Investment_Guide_Activity extends AppCompatActivity {
                         viewPagerFragment.setCurrentItem(current - 1);
                     } else {
                         finish();
-                        Intent i = new Intent(getBaseContext(), Frontpage_Activity.class);
-                        startActivity(i);
                     }
                 }
             });
@@ -111,12 +109,15 @@ public class Investment_Guide_Activity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     current = viewPagerFragment.getCurrentItem();
-                    if (current < fragmentViewPagerAdapter.getCount()) {
+                    if (current < fragmentViewPagerAdapter.getCount() - 1) {
                         viewPagerFragment.setCurrentItem(current + 1);
                         progressBar.setProgress(InvestmentProgress());
                     } else {
+                        //Needs to start a brand new fragment
+
                         result_frag = new Investment_Result_Fragment();
 
+                        getSupportFragmentManager().popBackStack();
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.fragment_container, result_frag).commit();
                     }
@@ -140,6 +141,7 @@ public class Investment_Guide_Activity extends AppCompatActivity {
 
             addBottomDots(0);
 
+            viewPagerIntro.setBackgroundColor(getResources().getColor(R.color.bg_screen1));
             viewPagerAdapter = new ViewPagerAdapter();
             viewPagerIntro.setAdapter(viewPagerAdapter);
             viewPagerIntro.addOnPageChangeListener(viewPagerPageChangeListenerIntro);
@@ -203,7 +205,7 @@ public class Investment_Guide_Activity extends AppCompatActivity {
         public void onPageSelected(int position) {
             if (position == 0) {
                 previous.setVisibility(View.GONE);
-            } else if (position <= fragmentViewPagerAdapter.getCount()) {
+            } else if (position < fragmentViewPagerAdapter.getCount() - 1) {
                 next.setText(R.string.Next);
                 previous.setVisibility(View.VISIBLE);
             } else {

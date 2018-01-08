@@ -1,42 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/question_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginTop="141dp"
-            android:textSize="18sp" />
-
-    </ScrollView>
+    <TextView
+        android:id="@+id/question_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/question_max_height"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/question_margin_top"
+        android:maxWidth="@dimen/tab_max_width"
+        android:elevation="@dimen/elevation"
+        android:textSize="22sp" />
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/next_button"
-        android:layout_marginBottom="40dp"
-        android:layout_centerInParent="true"
-        android:orientation="horizontal">
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/question_textView"
+        android:layout_marginTop="@dimen/radio_margin_top_2"
+        android:maxWidth="@dimen/tab_max_width"
+        android:orientation="vertical">
 
         <RadioButton
             android:id="@+id/radioButton1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@android:color/holo_blue_light" />
+            android:minHeight="@dimen/radio_button_size"
+            android:textSize="20sp"
+            android:elevation="@dimen/elevation"
+            android:buttonTint="@color/colorAccent" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@android:color/holo_blue_light" />
+            android:minHeight="@dimen/radio_button_size"
+            android:textSize="20sp"
+            android:elevation="@dimen/elevation"
+            android:buttonTint="@color/colorAccent" />
 
     </RadioGroup>
 
