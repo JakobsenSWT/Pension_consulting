@@ -3,8 +3,13 @@ package dk.pension_consulting;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.ArcMotion;
+import android.transition.ChangeBounds;
+import android.transition.TransitionManager;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -32,6 +37,14 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
         settings = findViewById(R.id.settings_btn);
         settings.setOnClickListener(this);
 
+     /*   TransitionManager.beginDelayedTransition(News,
+                new ChangeBounds().setPathMotion(new ArcMotion()).setDuration(500));
+
+        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) News.getLayoutParams();
+        params.gravity = isReturnAnimation ? (Gravity.LEFT | Gravity.TOP) :
+                (Gravity.BOTTOM | Gravity.RIGHT);
+        News.setLayoutParams(params);
+*/
     }
 
     @Override
