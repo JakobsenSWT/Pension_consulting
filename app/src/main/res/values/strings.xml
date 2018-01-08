@@ -13,7 +13,7 @@
     <string name="Error_missing2">Du mangler at svare på to spørgsmål</string>
     <string name="Error_missing3">Du mangler at svare på tre spørgsmål</string>
     <string name="Error_missingAll">Du har ikke svaret på nogle af spørgsmålene</string>
-    
+
     <string name="Slide_title">Boobies</string>
     <string name="Slide_desc">Boobies er life! Muhaha</string>
 
@@ -50,7 +50,7 @@
         ]]>
     </string>
 
-  <string-array name="contact_subjects">
+    <string-array name="contact_subjects">
         <item>Uvildig Rådgivning</item>
         <item>Pension Management</item>
         <item>Udbud</item>
@@ -68,5 +68,8 @@
     <string name="InvalidMail">Ugyldig mail adresse!</string>
     <string name="InvalidMailTxt">Den mail du har indtastet er ugyldig.\n
         Tjek venligst at den er indtastet korrekt.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
