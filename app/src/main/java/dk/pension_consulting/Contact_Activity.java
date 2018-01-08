@@ -134,7 +134,6 @@ public class Contact_Activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(this, Frontpage_Activity.class);
-        startActivity(i);
+        finish();
     }
 }
