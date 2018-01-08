@@ -1,23 +1,18 @@
 package dk.pension_consulting;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.transition.ArcMotion;
-import android.transition.ChangeBounds;
-import android.transition.TransitionManager;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageButton;
-import android.widget.Toast;
-
-
 
 public class Frontpage_Activity extends AppCompatActivity implements View.OnClickListener {
 
-    ImageButton News, Test, Contact, settings;
+    ImageButton News, Test, Contact, Settings;
+
+    private Handler mHandler = new Handler();
 
 
     @Override
@@ -34,43 +29,97 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
         Contact = findViewById(R.id.contact_btn);
         Contact.setOnClickListener(this);
 
-        settings = findViewById(R.id.settings_btn);
-        settings.setOnClickListener(this);
+        Settings = findViewById(R.id.settings_btn);
+        Settings.setOnClickListener(this);
 
-     /*   TransitionManager.beginDelayedTransition(News,
-                new ChangeBounds().setPathMotion(new ArcMotion()).setDuration(500));
 
-        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) News.getLayoutParams();
-        params.gravity = isReturnAnimation ? (Gravity.LEFT | Gravity.TOP) :
-                (Gravity.BOTTOM | Gravity.RIGHT);
-        News.setLayoutParams(params);
-*/
+
     }
+
+    @Override
+    protected void onStart () {
+        super.onStart();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                View arc_layout = findViewById(R.id.arc_layout);
+                //arc_layout.setBackgroundResource(R.color.colorPrimaryDark);
+                arc_layout.setPivotX(arc_layout.getWidth());
+                arc_layout.setPivotY(arc_layout.getHeight()/2);
+                arc_layout.setRotation(-180);
+                arc_layout.animate().rotation(0).setDuration(1000).setInterpolator(new DecelerateInterpolator());
+            }
+        },100);
+    }
+
+    public void exit() {
+        View arc_layout = findViewById(R.id.arc_layout);
+     //   arc_layout.setBackgroundResource(R.color.colorPrimaryDark);
+        arc_layout.setPivotX(arc_layout.getWidth());
+        arc_layout.setPivotY(arc_layout.getHeight()/2);
+        arc_layout.setRotation(0);
+        arc_layout.animate().rotation(180).setDuration(1000).setInterpolator(new DecelerateInterpolator());
+    }
+
+    private Runnable launchNews = new Runnable() {
+        @Override
+        public void run() {
+            Intent i= new Intent(getApplicationContext(), News_Activity.class);
+            startActivity(i);
+        }
+    };
+
+    private Runnable launchTest = new Runnable() {
+        public void run() {
+            Intent i= new Intent(getApplicationContext(), Investment_Guide_Activity.class);
+            startActivity(i);
+        }
+    };
+
+    private Runnable launchContact = new Runnable() {
+        public void run() {
+            Intent i= new Intent(getApplicationContext(), Contact_Activity.class);
+            startActivity(i);
+        }
+    };
+
+    private Runnable launchSettings = new Runnable() {
+        public void run() {
+            Intent i= new Intent(getApplicationContext(), Settings_Activity.class);
+            startActivity(i);
+        }
+    };
 
     @Override
     public void onClick(View view) {
         if (view == News)
         {
-            Intent i= new Intent(this, News_Activity.class);
-            startActivity(i);
+            exit();
+            mHandler.postDelayed(launchNews,1000);
         }
 
         else if (view == Test)
         {
-            Intent i= new Intent(this, Investment_Guide_Activity.class);
-            startActivity(i);
+            exit();
+            mHandler.postDelayed(launchTest,1000);
         }
 
         else if (view == Contact)
         {
-            Intent i= new Intent(this, Contact_Activity.class);
-            startActivity(i);
+            exit();
+            mHandler.postDelayed(launchContact,1000);
+
         }
 
-        else if (view == settings)
+        else if (view == Settings)
         {
-            Intent i= new Intent(this, Settings_Activity.class);
-            startActivity(i);
+            exit();
+            mHandler.postDelayed(launchSettings,1000);
         }
     }
+
+
+
+
+
 }

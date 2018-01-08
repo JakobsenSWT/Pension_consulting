@@ -24,5 +24,10 @@ public class Settings_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
     }
 
+    @Override
+    public void onBackPressed () {
+        finish();
+    }
+
 
 }

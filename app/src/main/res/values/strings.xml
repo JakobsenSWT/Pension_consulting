@@ -1,21 +1,28 @@
 <resources>
     <string name="app_name">Gruppe 10 Pension</string>
     <string name="Investment_Header">Investerings Guide</string>
+    <string name="News_Header">Nyheder</string>
+    <string name="Contact_Header">Kontakt</string>
+    <string name="Settings_Header">Indstillinger</string>
 
     <string name="Next">Næste</string>
     <string name="Skip">Skip</string>
     <string name="Previus">Tilbage</string>
     <string name="Exit">Home</string>
     <string name="Finish">Afslut</string>
+    <string name="Send">Send</string>
     <string name="GotIt">Klar!</string>
     <string name="OK_text">OK</string>
     <string name="About">About</string>
+    <string name="Loading">Loader</string>
+    <string name="Ops">Ups!</string>
 
     <string name="Error_title">Ups!</string>
     <string name="Error_missing1">Du mangler at svare på et spørgsmål</string>
     <string name="Error_missing2">Du mangler at svare på to spørgsmål</string>
     <string name="Error_missing3">Du mangler at svare på tre spørgsmål</string>
     <string name="Error_missingAll">Du har ikke svaret på nogle af spørgsmålene</string>
+    <string name="Error_common">Noget gik galt! Prøv igen senere</string>
 
     <string name="Slide_title">Boobies</string>
     <string name="Slide_desc">Boobies er life! Muhaha</string>

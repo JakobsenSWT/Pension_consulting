@@ -41,8 +41,8 @@ public class Investment_Result_Fragment extends Fragment implements View.OnClick
 
         resultText = view.findViewById(R.id.textView3);
 
-        previous = view.findViewById(R.id.previous_button);
-        next = view.findViewById(R.id.next_button);
+        previous = this.getActivity().findViewById(R.id.previous_button);
+        next = this.getActivity().findViewById(R.id.next_button);
 
         startLayout();
         return view;
@@ -61,9 +61,6 @@ public class Investment_Result_Fragment extends Fragment implements View.OnClick
     }
 
     public void startLayout () {
-        previous.setText(R.string.Previus);
-        next.setText(R.string.Next);
-
         this.result = ((prefManager.getInvestmentValue1() * 17)
                 + (prefManager.getInvestmentValue2() * 26)
                 + (prefManager.getInvestmentValue3() * 57))
@@ -81,13 +78,10 @@ public class Investment_Result_Fragment extends Fragment implements View.OnClick
         }
 
         prefManager.setInvestmentResult(result);
-
-        previous.setOnClickListener(this);
-        next.setOnClickListener(this);
     }
 
     public void goToFrontpage () {
-        getActivity().getSupportFragmentManager().popBackStack();
+        this.getActivity().finish();
 
         Intent i = new Intent(getActivity(), Frontpage_Activity.class);
         i.putExtra("Result_score", resultText.getText().toString());
@@ -98,6 +92,7 @@ public class Investment_Result_Fragment extends Fragment implements View.OnClick
     public void goToNextPage () {
         contact = new Contact_Fragment();
 
+        getActivity().getSupportFragmentManager().popBackStack();
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, contact).commit();
     }
