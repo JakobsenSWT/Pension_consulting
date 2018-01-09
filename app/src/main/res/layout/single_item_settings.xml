@@ -11,12 +11,4 @@
         android:textStyle="italic"
         android:padding="25dp" />
 
-    <Switch
-        android:id="@+id/settings_switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/title_textView"
-        android:layout_alignBottom="@+id/title_textView"
-        android:layout_alignParentEnd="true" />
-
 </RelativeLayout>

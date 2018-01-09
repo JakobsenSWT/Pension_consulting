@@ -3,8 +3,6 @@ package dk.pension_consulting;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import dk.pension_consulting.Investment_Guide_Fragments.Investment_Result_Fragment;
-
 /**
  * Created by Thomas-PC on 3/01/2018.
  */
@@ -25,6 +23,7 @@ public class PrefManager {
     private final String Investment_Value3 = "Weight_Question3";
     private final String Investment_Knowledge = "Weight_Question4";
     private final String Investment_Result = "TheActualResult";
+    private final String NotificationKey = "NotificationOnOff";
 
 
     public PrefManager(Context context) {
@@ -95,4 +94,12 @@ public class PrefManager {
         prefsEdit.commit();
     }
 
+    public boolean getNotificationEnabled() {
+        return preferences.getBoolean(NotificationKey, true);
+    }
+
+    public void setNotificationEnabled(Boolean value) {
+        prefsEdit.putBoolean(NotificationKey, value);
+        prefsEdit.commit();
+    }
 }

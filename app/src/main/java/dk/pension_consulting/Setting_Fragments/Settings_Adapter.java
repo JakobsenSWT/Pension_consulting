@@ -7,9 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -22,7 +20,6 @@ import dk.pension_consulting.R;
 public class Settings_Adapter extends ArrayAdapter <String> {
 
     private ArrayList <String> data;
-    private Switch aSwitch;
     private Context context;
 
     public Settings_Adapter(@NonNull Context context, int resource, ArrayList<String> data) {
@@ -39,24 +36,10 @@ public class Settings_Adapter extends ArrayAdapter <String> {
 
         TextView settings_title = rowView.findViewById(R.id.title_textView);
 
-        aSwitch = rowView.findViewById(R.id.settings_switch);
-        if (position == 0) {
-            aSwitch.setVisibility(View.VISIBLE);
-            aSwitch.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (aSwitch.isChecked()) {
-                        //ToDo
-                        Toast.makeText(context, "Clicked",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        } else
-            aSwitch.setVisibility(View.GONE);
-
         settings_title.setText(data.get(position));
 
         return rowView;
     }
+
+
 }
