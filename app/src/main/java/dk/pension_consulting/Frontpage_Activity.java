@@ -5,12 +5,16 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 public class Frontpage_Activity extends AppCompatActivity implements View.OnClickListener {
 
-    ImageButton News, Test, Contact, Settings;
+    ImageButton News, Guide, Info, Settings;
 
     private Handler mHandler = new Handler();
 
@@ -23,11 +27,12 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
         News = findViewById(R.id.news_btn);
         News.setOnClickListener(this);
 
-        Test = findViewById(R.id.guide_btn);
-        Test.setOnClickListener(this);
 
-        Contact = findViewById(R.id.contact_btn);
-        Contact.setOnClickListener(this);
+        Guide = findViewById(R.id.guide_btn);
+        Guide.setOnClickListener(this);
+
+        Info = findViewById(R.id.Info_btn);
+        Info.setOnClickListener(this);
 
         Settings = findViewById(R.id.settings_btn);
         Settings.setOnClickListener(this);
@@ -58,7 +63,7 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
         arc_layout.setPivotX(arc_layout.getWidth());
         arc_layout.setPivotY(arc_layout.getHeight()/2);
         arc_layout.setRotation(0);
-        arc_layout.animate().rotation(180).setDuration(1000).setInterpolator(new DecelerateInterpolator());
+        arc_layout.animate().rotation(180).setDuration(1000).setInterpolator(new AccelerateInterpolator());
     }
 
     private Runnable launchNews = new Runnable() {
@@ -78,7 +83,7 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
 
     private Runnable launchContact = new Runnable() {
         public void run() {
-            Intent i= new Intent(getApplicationContext(), Contact_Activity.class);
+            Intent i= new Intent(getApplicationContext(), Info_Activity.class);
             startActivity(i);
         }
     };
@@ -94,18 +99,21 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
     public void onClick(View view) {
         if (view == News)
         {
+            didTapButton(News);
             exit();
             mHandler.postDelayed(launchNews,1000);
         }
 
-        else if (view == Test)
+        else if (view == Guide)
         {
+            didTapButton(Guide);
             exit();
             mHandler.postDelayed(launchTest,1000);
         }
 
-        else if (view == Contact)
+        else if (view == Info)
         {
+            didTapButton(Info);
             exit();
             mHandler.postDelayed(launchContact,1000);
 
@@ -113,12 +121,32 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
 
         else if (view == Settings)
         {
+            didTapButton(Settings);
             exit();
             mHandler.postDelayed(launchSettings,1000);
         }
     }
 
 
+    public void didTapButton(View view) {
+        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
+
+        MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
+        myAnim.setInterpolator(interpolator);
+
+        if (view == News) {
+            News.startAnimation(myAnim);
+        }
+        else if (view == Guide) {
+            Guide.startAnimation(myAnim);
+        }
+        else if (view == Info) {
+            Info.startAnimation(myAnim);
+        }
+        else if (view == Settings) {
+            Settings.startAnimation(myAnim);
+        }
+    }
 
 
 

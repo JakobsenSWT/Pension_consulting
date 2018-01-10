@@ -51,12 +51,12 @@
 
     <string name="Contact_txt">
         <![CDATA[
-        <big>
+        <b> <big>
         Kontakt mig for et uforpligtende møde på: <br> <br>
         Tlf: +45 26 11 45 58 <br> <br>
-        Eller: <br> <br>
-        Bliv kontaktet
-        </big>
+        Eller <br> <br>
+        Bliv kontaktet:
+        </big> <b>
         ]]>
     </string>
 
@@ -81,5 +81,30 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="infotxt">
+         <![CDATA[
+        <b> Velkommen til Pension Consult Forsikringsmægler! </b>
+        </big>
+        <br> <br>
+        Uvildig pensionsrådgivning er mere vigtig end nogensinde før. <br>
+        Pensionsordningerne bliver stadig mere og mere komplicerede i takt med, at pensionsselskaberne øger antallet af mulige forsikringsdækninger og opsparingsformer.
+        Samtidig er kampen om kunderne blevet større end nogensinde før.
+        <br> <br>
+        Derfor er det vigtigt at finde en pensionsrådgiver, som har de fornødne kompetencer, og som giver troværdige råd.
+        Det er i den forbindelse væsentligt, at vi som jeres forsikringsmægler repræsenterer jer og jeres medarbejdere og ikke pensionsselskabet.
+        Det er heri, at vores uvildighed ligger.
+        <br> <br>
+        Med mere end 25 års erfaring i pensionsbranchen, heraf 20 års erfaring fra mæglerbranchen, tilbyder vi uvildig pensionsrådgivning til firmaer og deres ansatte samt privatpersoner på enten honorarbasis eller som led i et samlet koncept.
+        <br> <br>
+        Det er helt afgørende for os, at vi tilbyder et højt fagligt niveau og samtidig kan formidle kompliceret – og for mange kedeligt – stof på en levende og let tilgængelig måde.
+        <br> <br>
+        Vi lægger samtidig stor vægt på den personlige relation.
+        <br> <br>
+        Vi er specialister i de særlige problemstillinger, der gælder for grænsegængere mellem Danmark og Sverige.
+        <br> <br>
+        Tag meget gerne kontakt til mig, hvis du har spørgsmål, eller du gerne vil høre mere på et uforpligtigende møde.
+        ]]>
+    </string>
 
 </resources>

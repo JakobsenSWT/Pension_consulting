@@ -9,12 +9,41 @@
     tools:layout_editor_absoluteY="25dp">
 
 
+
+
+    <ImageView
+        android:id="@+id/semicirclered"
+        android:layout_width="210dp"
+        android:layout_height="420dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/semicirclerightred"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
+
+
+    <ImageView
+        android:id="@+id/semicirclewhite"
+        android:layout_width="190dp"
+        android:layout_height="380dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/semicirclewhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
+
+
     <com.ogaclejapan.arclayout.ArcLayout
         android:id="@+id/arc_layout"
         android:layout_width="252dp"
         android:layout_height="0dp"
         app:arc_axisRadius="200dp"
-        app:arc_color="#80FFFFFF"
         app:arc_freeAngle="false"
         app:arc_origin="right"
         app:arc_radius="200dp"
@@ -75,7 +104,7 @@
             app:srcCompat="@drawable/ic_guide" />
 
         <ImageButton
-            android:id="@+id/contact_btn"
+            android:id="@+id/Info_btn"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:background="@drawable/buttonshape"
@@ -129,16 +158,6 @@
         app:layout_constraintVertical_bias="0.004"
         app:srcCompat="@drawable/logo" />
 
-    <ImageView
-        android:layout_width="142dp"
-        android:layout_height="274dp"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/circle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
+
 
 </android.support.constraint.ConstraintLayout>
