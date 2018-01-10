@@ -1,5 +1,10 @@
 package dk.pension_consulting.Contact_Fragments;
 
+import android.app.ProgressDialog;
+import android.content.pm.PackageInstaller;
+import android.content.pm.PackageInstaller.Session;
+import android.os.Message;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -18,7 +23,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import dk.pension_consulting.Contact_Activity;
+import java.io.UnsupportedEncodingException;
+import java.net.PasswordAuthentication;
+import java.util.Properties;
+
+import javax.sql.DataSource;
+
 import dk.pension_consulting.R;
 
 /**
@@ -34,6 +44,8 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
     private Button sendButton;
     private Spinner mySpinner;
     private ArrayAdapter<String> myAdapter;
+
+
 
     @Nullable
     @Override
@@ -110,6 +122,8 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
         }
     }
 
+
+
     public void sendMessageWithIntent() {
 
         final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
@@ -121,6 +135,8 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
 
         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
+
+
 
     public Dialog errorDialog (int ErrorType) {
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
@@ -169,5 +185,6 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
         }
     }
 
-}
 
+
+}
