@@ -24,9 +24,10 @@ public class Investment_Question1_Fragment extends Fragment implements View.OnCl
     private TextView Question;
     private RadioButton Answer1, Answer2, Answer3, Answer4;
 
+    /*
     public Investment_Question1_Fragment () {
 
-    }
+    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

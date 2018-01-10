@@ -94,12 +94,16 @@ public class PrefManager {
         prefsEdit.commit();
     }
 
-    public boolean getNotificationEnabled() {
-        return preferences.getBoolean(NotificationKey, true);
+    public float getInvestmentResult () {
+        return preferences.getFloat(Investment_Result, 0);
     }
 
     public void setNotificationEnabled(Boolean value) {
         prefsEdit.putBoolean(NotificationKey, value);
         prefsEdit.commit();
+    }
+
+    public boolean getNotificationEnabled() {
+        return preferences.getBoolean(NotificationKey, true);
     }
 }
