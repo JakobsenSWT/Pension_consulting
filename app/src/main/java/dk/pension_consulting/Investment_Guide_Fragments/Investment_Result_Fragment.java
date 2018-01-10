@@ -50,14 +50,7 @@ public class Investment_Result_Fragment extends Fragment implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.previous_button:
-                goToFrontpage();
-                break;
-            case R.id.next_button:
-                goToNextPage();
-                break;
-        }
+
     }
 
     public void startLayout () {
@@ -80,20 +73,4 @@ public class Investment_Result_Fragment extends Fragment implements View.OnClick
         prefManager.setInvestmentResult(result);
     }
 
-    public void goToFrontpage () {
-        this.getActivity().finish();
-
-        Intent i = new Intent(getActivity(), Frontpage_Activity.class);
-        i.putExtra("Result_score", resultText.getText().toString());
-        i.putExtra("Investment_experience: ", this.result);
-        startActivity(i);
-    }
-
-    public void goToNextPage () {
-        contact = new Contact_Fragment();
-
-        getActivity().getSupportFragmentManager().popBackStack();
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, contact).commit();
-    }
 }
