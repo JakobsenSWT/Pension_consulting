@@ -41,8 +41,8 @@
 
     <com.ogaclejapan.arclayout.ArcLayout
         android:id="@+id/arc_layout"
-        android:layout_width="252dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:arc_axisRadius="200dp"
         app:arc_freeAngle="false"
         app:arc_origin="right"
@@ -139,23 +139,32 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="277dp"
-        android:layout_height="97dp"
+        android:layout_width="311dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="72dp"
         android:layout_marginLeft="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/semicirclered"
+        app:layout_constraintVertical_bias="0.393"
         app:srcCompat="@drawable/pensionconsult" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="145dp"
-        android:layout_height="221dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintEnd_toStartOf="@+id/semicirclered"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.004"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/logo" />
 
 

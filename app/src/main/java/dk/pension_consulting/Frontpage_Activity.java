@@ -1,9 +1,11 @@
 package dk.pension_consulting;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
@@ -11,12 +13,17 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import com.ogaclejapan.arclayout.ArcLayout;
 
 public class Frontpage_Activity extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton News, Guide, Info, Settings;
 
     private Handler mHandler = new Handler();
+
+    private ArcLayout arcLayout;
 
 
     @Override
@@ -36,6 +43,38 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
 
         Settings = findViewById(R.id.settings_btn);
         Settings.setOnClickListener(this);
+
+        arcLayout = findViewById(R.id.arc_layout);
+
+
+
+
+        if ((getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) ==
+                Configuration.SCREENLAYOUT_SIZE_XLARGE) {
+            Toast.makeText(this, "XLARGE",
+                    Toast.LENGTH_SHORT).show();
+
+        }
+
+        else if ((getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) ==
+                Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            Toast.makeText(this, "LARGE",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+
+        else if ((getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) ==
+                Configuration.SCREENLAYOUT_SIZE_SMALL) {
+            Toast.makeText(this, "SMALL",
+                    Toast.LENGTH_SHORT).show();
+            arcLayout.setAxisRadius(100);
+
+        }
+
+
 
 
 
