@@ -1,33 +1,13 @@
 package dk.pension_consulting;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import dk.pension_consulting.Investment_Guide_Fragments.*;
+import dk.pension_consulting.Investment_Guide_Fragments.Investment_Guide;
+import dk.pension_consulting.Investment_Guide_Fragments.Investment_Intro_Fragment;
+import dk.pension_consulting.Investment_Guide_Fragments.Investment_Result_Fragment;
 
 /**
  * Created by Thomas-PC on 2/01/2018.

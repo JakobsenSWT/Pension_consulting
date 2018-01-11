@@ -1,5 +1,6 @@
 package dk.pension_consulting.Investment_Guide_Fragments;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,8 +87,8 @@ public class Investment_Guide extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.next_button:
-                if(viewPagerFragment.getCurrentItem() == fragmentViewPagerAdapter.getCount()
-                        && progressBar.getProgress() == 3) {
+                if(viewPagerFragment.getCurrentItem() == fragmentViewPagerAdapter.getCount() - 1
+                        && progressBar.getProgress() == 4) {
 
                     ((Investment_Guide_Activity) getActivity()).goToResult();
 
@@ -94,6 +96,20 @@ public class Investment_Guide extends Fragment implements View.OnClickListener {
                     viewPagerFragment.setCurrentItem(viewPagerFragment.getCurrentItem() + 1);
                 }
                 break;
+        }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        //ToDo check if intro is open so it remains open when rotating.
+
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this.getActivity(), "landscape", Toast.LENGTH_SHORT).show();
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Toast.makeText(this.getActivity(), "portrait", Toast.LENGTH_SHORT).show();
         }
     }
 

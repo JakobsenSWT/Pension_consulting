@@ -15,6 +15,7 @@
     <string name="OK_text">OK</string>
     <string name="About">About</string>
     <string name="Loading">Loader</string>
+    <string name="Loaded">Loaded</string>
     <string name="Ops">Ups!</string>
 
     <string name="Error_title">Ups!</string>

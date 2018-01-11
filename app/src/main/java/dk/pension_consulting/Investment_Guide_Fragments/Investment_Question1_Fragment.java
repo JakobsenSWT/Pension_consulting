@@ -1,14 +1,17 @@
 package dk.pension_consulting.Investment_Guide_Fragments;
 
+import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
+import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import dk.pension_consulting.PrefManager;
 import dk.pension_consulting.R;
@@ -21,13 +24,10 @@ public class Investment_Question1_Fragment extends Fragment implements View.OnCl
 
     private PrefManager prefManager;
 
+    private FrameLayout frameLayout;
+    private View view;
     private TextView Question;
     private RadioButton Answer1, Answer2, Answer3, Answer4;
-
-    /*
-    public Investment_Question1_Fragment () {
-
-    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,10 @@ public class Investment_Question1_Fragment extends Fragment implements View.OnCl
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_investment_4answers, container, false);
+        frameLayout = new FrameLayout(getActivity());
+        inflater = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        view = inflater.inflate(R.layout.frag_investment_question_portrait, null);
+        frameLayout.addView(view);
 
         prefManager = new PrefManager(this.getActivity());
 
@@ -67,6 +70,27 @@ public class Investment_Question1_Fragment extends Fragment implements View.OnCl
             case R.id.radioButton4:
                 prefManager.setInvestmentValue1(4);
                 break;
+        }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            frameLayout.removeAllViews();
+            LayoutInflater inflater = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.frag_investment_question_landscape, null);
+
+            Toast.makeText(this.getActivity(), "landscape", Toast.LENGTH_SHORT).show();
+
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            frameLayout. removeAllViews();
+            LayoutInflater inflater = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.frag_investment_question_portrait, null);
+            frameLayout .addView(view);
+
+            Toast.makeText(this.getActivity(), "portrait", Toast.LENGTH_SHORT).show();
         }
     }
 

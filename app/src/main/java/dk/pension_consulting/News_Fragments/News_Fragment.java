@@ -46,6 +46,10 @@ public class News_Fragment extends Fragment implements AdapterView.OnItemClickLi
     public View onCreateView (LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstance) {
         View view = inflater.inflate(R.layout.listview, container, false);
 
+        dialog = new ProgressDialog(this.getActivity());
+        dialog.setTitle(R.string.Loading);
+        dialog.show();
+
         listView = view.findViewById(R.id.listView);
         toolbar = getActivity().findViewById(R.id.toolbar_actionbar);
 
@@ -55,11 +59,9 @@ public class News_Fragment extends Fragment implements AdapterView.OnItemClickLi
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         try {
-            new getNewsFeedAsync(this.getActivity()).execute();
-            return view;
+            News_Adapter adapter = new News_Adapter(this.getActivity());
+            listView.setAdapter(adapter);
         } catch (Exception e) {
-            e.printStackTrace();
-
             AlertDialog dialog = new AlertDialog.Builder(view.getContext())
                     .create();
             dialog.setCancelable(false);
@@ -69,12 +71,21 @@ public class News_Fragment extends Fragment implements AdapterView.OnItemClickLi
 
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
+                    getActivity().finish();
                 }
             });
             dialog.show();
         }
 
+        startLayout();
+
         return view;
+    }
+
+    @Override
+    public void onStart () {
+        super.onStart();
+        dialog.dismiss();
     }
 
     public void startLayout() {
@@ -88,37 +99,4 @@ public class News_Fragment extends Fragment implements AdapterView.OnItemClickLi
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(test.url));
         startActivity(intent);
     }
-
-    class getNewsFeedAsync extends AsyncTask<Object, Void, String> {
-
-        private Context context;
-
-        getNewsFeedAsync(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-            dialog = new ProgressDialog(context);
-            dialog.setTitle(R.string.Loading);
-            dialog.show();
-        }
-
-        @Override
-        protected String doInBackground(Object... params) {
-                News_Adapter adapter = new News_Adapter(context);
-                listView.setAdapter(adapter);
-                startLayout();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute (String result) {
-            dialog.dismiss();
-        }
-
-    }
-
 }
