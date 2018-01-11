@@ -1,18 +1,12 @@
 package dk.pension_consulting.Contact_Fragments;
 
-import android.app.ProgressDialog;
-import android.content.pm.PackageInstaller;
-import android.content.pm.PackageInstaller.Session;
-import android.os.Message;
-import android.provider.ContactsContract;
-import android.support.v4.app.Fragment;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.AsyncTask;
-import android.support.annotation.Nullable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,12 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import java.io.UnsupportedEncodingException;
-import java.net.PasswordAuthentication;
-import java.util.Properties;
-
-import javax.sql.DataSource;
 
 import dk.pension_consulting.R;
 
@@ -40,7 +28,6 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
     private String name, mail, subject, comment;
 
     private EditText setName, setSubject, setComment;
-
     private Button sendButton;
     private Spinner mySpinner;
     private ArrayAdapter<String> myAdapter;
@@ -166,25 +153,4 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
         });
         return dialog;
     }
-
-    // Everything below is created to send email without intent.
-    public void sendMessage () {
-
-    }
-
-    public class sendMailTask extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            try {
-                sendMessage();
-            } catch (Exception e) {
-
-            }
-            return null;
-        }
-    }
-
-
-
 }
