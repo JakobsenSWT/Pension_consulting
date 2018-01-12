@@ -3,22 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/semicirclered"
-        android:layout_width="210dp"
-        android:layout_height="420dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:background="@drawable/semicirclerightblue" />
-
-
-    <ImageView
-        android:id="@+id/semicirclewhite"
-        android:layout_width="190dp"
-        android:layout_height="380dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/img_ring_margin"
-        android:background="@drawable/semicirclewhite" />
+    <include layout="@layout/ring_background_right"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/FABcontact"
