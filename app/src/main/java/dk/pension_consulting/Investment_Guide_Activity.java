@@ -1,5 +1,6 @@
 package dk.pension_consulting;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +24,11 @@ public class Investment_Guide_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_investment_guide_);
-
+/*
+        if (savedInstanceState != null) {
+            savedInstanceState.getInt("PageNumber");
+        }
+*/
         prefManager = new PrefManager(this);
 
         toolbar = findViewById(R.id.toolbar_actionbar);
@@ -35,8 +40,6 @@ public class Investment_Guide_Activity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, Guide).commit();
         } else {
-            prefManager.setFirstTimeLaunch(false);
-
             Fragment Intro = new Investment_Intro_Fragment();
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, Intro).commit();
@@ -52,7 +55,13 @@ public class Investment_Guide_Activity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, Result).commit();
     }
+/*
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
 
+    }
+*/
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();

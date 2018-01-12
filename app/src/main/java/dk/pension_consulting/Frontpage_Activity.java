@@ -5,21 +5,23 @@ import android.content.res.Configuration;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.ogaclejapan.arclayout.ArcLayout;
 
+import dk.pension_consulting.Animations_Frontpage.MyBounceInterpolator;
+
 public class Frontpage_Activity extends AppCompatActivity implements View.OnClickListener {
 
-    ImageButton News, Guide, Info, Settings;
+    private PrefManager prefManager;
+
+    ImageButton News, Guide, Contact, Info, Settings;
 
     private Handler mHandler = new Handler();
 
@@ -31,52 +33,44 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frontpage_);
 
+        prefManager = new PrefManager(this);
+
         News = findViewById(R.id.news_btn);
         News.setOnClickListener(this);
 
+        Contact = findViewById(R.id.Info_btn);
+        Contact.setOnClickListener(this);
 
         Guide = findViewById(R.id.guide_btn);
         Guide.setOnClickListener(this);
 
-        Info = findViewById(R.id.Info_btn);
-        Info.setOnClickListener(this);
-
         Settings = findViewById(R.id.settings_btn);
         Settings.setOnClickListener(this);
 
+        Info = findViewById(R.id.imageButton_logoRings);
+        Info.setOnClickListener(this);
+
         arcLayout = findViewById(R.id.arc_layout);
 
-
-
-
-        if ((getResources().getConfiguration().screenLayout &
-                Configuration.SCREENLAYOUT_SIZE_MASK) ==
+        //XLarge
+        if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) ==
                 Configuration.SCREENLAYOUT_SIZE_XLARGE) {
-            Toast.makeText(this, "XLARGE",
-                    Toast.LENGTH_SHORT).show();
 
         }
 
-        else if ((getResources().getConfiguration().screenLayout &
-                Configuration.SCREENLAYOUT_SIZE_MASK) ==
+        //Large
+        else if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) ==
                 Configuration.SCREENLAYOUT_SIZE_LARGE) {
-            Toast.makeText(this, "LARGE",
-                    Toast.LENGTH_SHORT).show();
-        }
+
+            }
 
 
-        else if ((getResources().getConfiguration().screenLayout &
-                Configuration.SCREENLAYOUT_SIZE_MASK) ==
+        //Small
+        else if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) ==
                 Configuration.SCREENLAYOUT_SIZE_SMALL) {
-            Toast.makeText(this, "SMALL",
-                    Toast.LENGTH_SHORT).show();
+
             arcLayout.setAxisRadius(100);
-
         }
-
-
-
-
 
     }
 
@@ -108,6 +102,7 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
     private Runnable launchNews = new Runnable() {
         @Override
         public void run() {
+            News.setEnabled(true);
             Intent i= new Intent(getApplicationContext(), News_Activity.class);
             startActivity(i);
         }
@@ -115,6 +110,12 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
 
     private Runnable launchTest = new Runnable() {
         public void run() {
+            prefManager.setInvestmentValue1(0);
+            prefManager.setInvestmentValue2(0);
+            prefManager.setInvestmentValue3(0);
+            prefManager.setInvestmentKnowledge(0);
+
+            Guide.setEnabled(true);
             Intent i= new Intent(getApplicationContext(), Investment_Guide_Activity.class);
             startActivity(i);
         }
@@ -122,13 +123,16 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
 
     private Runnable launchContact = new Runnable() {
         public void run() {
+            Contact.setEnabled(true);
             Intent i= new Intent(getApplicationContext(), Info_Activity.class);
+            i.putExtra("Contact", true);
             startActivity(i);
         }
     };
 
     private Runnable launchSettings = new Runnable() {
         public void run() {
+            Settings.setEnabled(true);
             Intent i= new Intent(getApplicationContext(), Settings_Activity.class);
             startActivity(i);
         }
@@ -138,13 +142,23 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
     public void onClick(View view) {
         if (view == News)
         {
+            News.setEnabled(false);
             didTapButton(News);
             exit();
             mHandler.postDelayed(launchNews,1000);
         }
 
+        else if (view == Contact)
+        {
+            Contact.setEnabled(false);
+            didTapButton(Contact);
+            exit();
+            mHandler.postDelayed(launchContact,1000);
+        }
+
         else if (view == Guide)
         {
+            Guide.setEnabled(false);
             didTapButton(Guide);
             exit();
             mHandler.postDelayed(launchTest,1000);
@@ -152,14 +166,13 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
 
         else if (view == Info)
         {
-            didTapButton(Info);
-            exit();
-            mHandler.postDelayed(launchContact,1000);
-
+            Intent i= new Intent(getApplicationContext(), Info_Activity.class);
+            startActivity(i);
         }
 
         else if (view == Settings)
         {
+            Settings.setEnabled(false);
             didTapButton(Settings);
             exit();
             mHandler.postDelayed(launchSettings,1000);

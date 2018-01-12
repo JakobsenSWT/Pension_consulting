@@ -33,11 +33,12 @@ public class Investment_Guide extends Fragment implements View.OnClickListener {
     private PrefManager prefManager;
 
     private Toolbar toolbar;
-    private TabLayout tabLayout;
     private ProgressBar progressBar;
     private Button next, previous;
 
-    private ViewPager viewPagerFragment;
+    private String key = "PageNumber";
+
+    public ViewPager viewPagerFragment;
     private Investment_ViewPagerAdapter_Fragment fragmentViewPagerAdapter;
 
     @Nullable
@@ -48,7 +49,6 @@ public class Investment_Guide extends Fragment implements View.OnClickListener {
         prefManager = new PrefManager(this.getActivity());
 
         toolbar = getActivity().findViewById(R.id.toolbar_actionbar);
-        tabLayout = view.findViewById(R.id.tabs);
 
         progressBar = view.findViewById(R.id.progressBar);
         previous = view.findViewById(R.id.previous_button);
@@ -62,8 +62,6 @@ public class Investment_Guide extends Fragment implements View.OnClickListener {
         fragmentViewPagerAdapter.addFragment(new Investment_Question4_Fragment(), "IV");
         viewPagerFragment.setAdapter(fragmentViewPagerAdapter);
         viewPagerFragment.addOnPageChangeListener(viewPagerPageChangeListenerFragment);
-
-        tabLayout.setupWithViewPager(viewPagerFragment);
 
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().show();
@@ -87,6 +85,8 @@ public class Investment_Guide extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.next_button:
+                progressBar.setProgress(InvestmentProgress());
+                
                 if(viewPagerFragment.getCurrentItem() == fragmentViewPagerAdapter.getCount() - 1
                         && progressBar.getProgress() == 4) {
 
@@ -98,28 +98,30 @@ public class Investment_Guide extends Fragment implements View.OnClickListener {
                 break;
         }
     }
-
+/*
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
-        //ToDo check if intro is open so it remains open when rotating.
-
-
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Toast.makeText(this.getActivity(), "landscape", Toast.LENGTH_SHORT).show();
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            Toast.makeText(this.getActivity(), "portrait", Toast.LENGTH_SHORT).show();
+        if (savedInstanceState != null) {
+            viewPagerFragment.setCurrentItem(savedInstanceState.getInt(key));
+            progressBar.setProgress(InvestmentProgress());
         }
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+
+    }
+*/
     public void startLayout () {
         previous.setText(R.string.Previus);
-        next.setText(R.string.Next);
-
         previous.setVisibility(View.GONE);
-
         previous.setOnClickListener(this);
+
+        next.setText(R.string.Next);
         next.setOnClickListener(this);
     }
 

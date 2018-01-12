@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/semicirclered"
+        android:layout_width="210dp"
+        android:layout_height="420dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:background="@drawable/semicirclerightblue" />
+
+
+    <ImageView
+        android:id="@+id/semicirclewhite"
+        android:layout_width="190dp"
+        android:layout_height="380dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/img_ring_margin"
+        android:background="@drawable/semicirclewhite" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/FABcontact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_vertical_margin"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@color/colorAccent"
+        android:src="@drawable/ic_contactwhite" />
+
+
+    <ScrollView
+        android:id="@+id/SCROLLER_ID"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="vertical" >
+
+        <TextView
+            android:id="@+id/infotext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/Info_margin"
+            android:layout_marginStart="@dimen/Info_margin"
+            android:layout_marginTop="@dimen/Info_margin"
+            android:elevation="@dimen/elevation"
+            android:text="@string/infotxt"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </ScrollView>
+
+</RelativeLayout>

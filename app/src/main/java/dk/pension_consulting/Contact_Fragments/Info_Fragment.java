@@ -20,7 +20,7 @@ public class Info_Fragment extends Fragment implements View.OnClickListener{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_info, container, false);
+        View view = inflater.inflate(R.layout.frag_info, container, false);
 
         TextView text = view.findViewById(R.id.infotext);
         text.setText(Html.fromHtml(getString(R.string.infotxt)));

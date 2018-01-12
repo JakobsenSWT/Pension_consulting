@@ -27,20 +27,18 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
 
     private String name, mail, subject, comment;
 
+    private TextView text;
     private EditText setName, setSubject, setComment;
     private Button sendButton;
     private Spinner mySpinner;
     private ArrayAdapter<String> myAdapter;
-
-
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_contact, container, false);
 
-        TextView text = view.findViewById(R.id.textView2);
-        text.setText(Html.fromHtml(getString(R.string.Contact_txt)));
+        text = view.findViewById(R.id.textView2);
 
         sendButton = view.findViewById(R.id.button2);
 
@@ -88,6 +86,8 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
     }
 
     public void startLayout () {
+        text.setText(Html.fromHtml(getString(R.string.Contact_txt)));
+
         sendButton.setOnClickListener(this);
     }
 
@@ -108,8 +108,6 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
                     "\n\n";
         }
     }
-
-
 
     public void sendMessageWithIntent() {
 

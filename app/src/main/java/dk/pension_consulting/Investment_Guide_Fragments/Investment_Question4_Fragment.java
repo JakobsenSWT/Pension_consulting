@@ -23,14 +23,10 @@ public class Investment_Question4_Fragment extends Fragment implements View.OnCl
     private TextView Question;
     private RadioButton Answer1, Answer2, Answer3, Answer4;
 
-    public Investment_Question4_Fragment () {
-
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_investment_question_portrait, container, false);
+        View view = inflater.inflate(R.layout.frag_investment_question, container, false);
 
         prefManager = new PrefManager(this.getActivity());
 
@@ -69,6 +65,18 @@ public class Investment_Question4_Fragment extends Fragment implements View.OnCl
         Answer2.setText(R.string.Answer4_2);
         Answer3.setText(R.string.Answer4_3);
         Answer4.setText(R.string.Answer4_4);
+
+        if (prefManager.getInvestmentValue1() != 0) {
+            if (prefManager.getInvestmentKnowledge() == 1) {
+                Answer1.setChecked(true);
+            } else if (prefManager.getInvestmentKnowledge() == 2) {
+                Answer2.setChecked(true);
+            } else if (prefManager.getInvestmentKnowledge() == 3) {
+                Answer3.setChecked(true);
+            } else if (prefManager.getInvestmentKnowledge() == 4) {
+                Answer4.setChecked(true);
+            }
+        }
 
         Answer1.setOnClickListener(this);
         Answer2.setOnClickListener(this);
