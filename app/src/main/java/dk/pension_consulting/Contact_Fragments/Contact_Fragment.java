@@ -40,7 +40,7 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
 
         text = view.findViewById(R.id.textView2);
 
-        sendButton = view.findViewById(R.id.button2);
+        sendButton = view.findViewById(R.id.send_button);
 
         setName = view.findViewById(R.id.etName);
         setSubject = view.findViewById(R.id.etMail);
@@ -88,6 +88,7 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
     public void startLayout () {
         text.setText(Html.fromHtml(getString(R.string.Contact_txt)));
 
+        sendButton.setText(R.string.Send);
         sendButton.setOnClickListener(this);
     }
 

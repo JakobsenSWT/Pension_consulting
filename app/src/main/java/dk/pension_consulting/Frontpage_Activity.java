@@ -166,6 +166,8 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
 
         else if (view == Info)
         {
+            didTapButton(Info);
+            exit();
             Intent i= new Intent(getApplicationContext(), Info_Activity.class);
             startActivity(i);
         }
@@ -191,6 +193,9 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
         }
         else if (view == Guide) {
             Guide.startAnimation(myAnim);
+        }
+        else if (view == Contact) {
+            Contact.startAnimation(myAnim);
         }
         else if (view == Info) {
             Info.startAnimation(myAnim);

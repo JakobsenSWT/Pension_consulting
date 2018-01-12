@@ -83,14 +83,15 @@
                     android:inputType="textMultiLine" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/send_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/etComment"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Send" />
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:textColor="@color/textColorPrimary"
+                    android:background="@color/bg_screen1"/>
 
                 <com.unstoppable.submitbuttonview.SubmitButton
                     android:id="@+id/submitbutton"
