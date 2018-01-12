@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import dk.pension_consulting.R;
 
@@ -52,7 +53,8 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setAdapter(myAdapter);
 
-        retrieveData(savedInstanceState);
+        Bundle bundle = this.getArguments();
+        retrieveData(bundle);
 
         startLayout();
 
@@ -101,10 +103,11 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
 
     public void retrieveData (Bundle dataMap) {
         if (dataMap != null) {
-            String s = dataMap.getString("Result_score");
+            Toast.makeText(this.getContext(), "Dit result bliver vedhæftet", Toast.LENGTH_SHORT).show();
+            float f = dataMap.getFloat("Result_score");
             int i = dataMap.getInt("Investment_experience");
 
-            comment = "Result score: " + s +
+            comment = "Result score: " + f +
                     "\nInvestment experience: " + i +
                     "\n\n";
         }
@@ -121,8 +124,6 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
 
         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
-
-
 
     public Dialog errorDialog (int ErrorType) {
         AlertDialog dialog = new AlertDialog.Builder(getActivity())

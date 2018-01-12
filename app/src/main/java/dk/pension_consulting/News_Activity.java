@@ -1,18 +1,14 @@
 package dk.pension_consulting;
 
-import android.app.SearchManager;
-import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import dk.pension_consulting.News_Fragments.*;
+import dk.pension_consulting.News_Fragments.News_Fragment;
 
 public class News_Activity extends AppCompatActivity {
 

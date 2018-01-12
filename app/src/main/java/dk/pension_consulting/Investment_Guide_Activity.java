@@ -1,6 +1,5 @@
 package dk.pension_consulting;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -35,10 +34,12 @@ public class Investment_Guide_Activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().show();
 
-        if (!prefManager.getIsFirstTimeLaunch()) {
+        if (!prefManager.getIsFirstTimeLaunch() && prefManager.getInvestmentProgress() != 4) {
             Fragment Guide = new Investment_Guide();
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, Guide).commit();
+        } else if (prefManager.getInvestmentProgress() == 4){
+            goToResult();
         } else {
             Fragment Intro = new Investment_Intro_Fragment();
             getSupportFragmentManager().beginTransaction()

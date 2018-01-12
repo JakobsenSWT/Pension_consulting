@@ -36,7 +36,7 @@ public class Investment_Guide extends Fragment implements View.OnClickListener {
     private ProgressBar progressBar;
     private Button next, previous;
 
-    private String key = "PageNumber";
+//    private String key = "PageNumber";
 
     public ViewPager viewPagerFragment;
     private Investment_ViewPagerAdapter_Fragment fragmentViewPagerAdapter;

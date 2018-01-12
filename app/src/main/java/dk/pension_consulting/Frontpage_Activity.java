@@ -114,6 +114,7 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
             prefManager.setInvestmentValue2(0);
             prefManager.setInvestmentValue3(0);
             prefManager.setInvestmentKnowledge(0);
+            prefManager.setInvestmentProgress(0);
 
             Guide.setEnabled(true);
             Intent i= new Intent(getApplicationContext(), Investment_Guide_Activity.class);

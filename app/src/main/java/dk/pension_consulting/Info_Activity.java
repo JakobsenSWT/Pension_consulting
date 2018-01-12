@@ -48,6 +48,7 @@ public class Info_Activity extends AppCompatActivity{
         if (extra != null) {
             Boolean contactOrNot = extra.getBoolean("Contact");
             if (contactOrNot) {
+                fragmentViewPagerAdapter.getItem(1).setArguments(extra);
                 viewPagerFragment.setCurrentItem(fragmentViewPagerAdapter.getCount());
             }
         }
@@ -70,8 +71,6 @@ public class Info_Activity extends AppCompatActivity{
 
         }
     };
-
-
 
     public class FragmentViewPagerAdapter extends FragmentPagerAdapter {
         public final List<Fragment> FragmentList = new ArrayList<>();
