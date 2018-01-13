@@ -1,130 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+        <include layout="@layout/ring_background_left"/>
 
-        <ImageView
-            android:id="@+id/semicircleblue"
-            android:layout_width="210dp"
-            android:layout_height="420dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/semicircleleftblue"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.496" />
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-
-        <ImageView
-            android:id="@+id/semicirclewhite"
-            android:layout_width="190dp"
-            android:layout_height="380dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/semicircleleftwhite"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.497" />
-
-
-        <EditText
-            android:id="@+id/etName"
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView2"
-            android:layout_marginTop="12dp"
-            android:ems="10"
-            android:hint="Navn"
-            android:inputType="textPersonName"
-            android:textSize="20sp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-        <EditText
-            android:id="@+id/etMail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/etName"
-            android:layout_marginTop="24dp"
-            android:ems="10"
-            android:hint="E-mail"
-            android:inputType="textEmailAddress"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etName" />
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/etMail"
-            android:layout_marginTop="44dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etMail" />
-
-        <EditText
-            android:id="@+id/etComment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/spinner"
-            android:layout_marginTop="44dp"
-            android:ems="10"
-            android:hint="Evt. kommentar"
-            android:inputType="textMultiLine"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner" />
-
-        <Button
-            android:id="@+id/button2"
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/etComment"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Send"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etComment" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="64dp"
-            android:autoLink="all"
-            android:text="@string/Contact_txt"
-            android:textAlignment="center"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:layout_centerHorizontal="true"
+                    android:elevation="@dimen/elevation"
+                    android:autoLink="all"
+                    android:text="@string/Contact_txt"
+                    android:textAlignment="center"
+                    android:textColor="@color/textColorSecondary" />
 
-        <com.unstoppable.submitbuttonview.SubmitButton
-            android:id="@+id/submitbutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView2"
+                    android:layout_marginTop="12dp"
+                    android:ems="10"
+                    android:hint="Navn"
+                    android:inputType="textPersonName"
+                    android:textSize="20sp" />
 
-</android.support.constraint.ConstraintLayout>
+                <EditText
+                    android:id="@+id/etMail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/etName"
+                    android:layout_marginTop="24dp"
+                    android:ems="10"
+                    android:hint="E-mail"
+                    android:inputType="textEmailAddress" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/etMail"
+                    android:layout_marginTop="44dp"/>
+
+                <EditText
+                    android:id="@+id/etComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/spinner"
+                    android:layout_marginTop="44dp"
+                    android:ems="10"
+                    android:hint="Evt. kommentar"
+                    android:inputType="textMultiLine" />
+
+                <Button
+                    android:id="@+id/send_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etComment"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:textColor="@color/textColorPrimary"
+                    android:background="@color/bg_screen1"/>
+
+                <com.unstoppable.submitbuttonview.SubmitButton
+                    android:id="@+id/submitbutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+</ScrollView>
+
+</RelativeLayout>

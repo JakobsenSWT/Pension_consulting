@@ -23,20 +23,24 @@ public class Investment_Guide_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_investment_guide_);
-
+/*
+        if (savedInstanceState != null) {
+            savedInstanceState.getInt("PageNumber");
+        }
+*/
         prefManager = new PrefManager(this);
 
         toolbar = findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().show();
 
-        if (!prefManager.getIsFirstTimeLaunch()) {
+        if (!prefManager.getIsFirstTimeLaunch() && prefManager.getInvestmentProgress() != 4) {
             Fragment Guide = new Investment_Guide();
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, Guide).commit();
+        } else if (prefManager.getInvestmentProgress() == 4){
+            goToResult();
         } else {
-            prefManager.setFirstTimeLaunch(false);
-
             Fragment Intro = new Investment_Intro_Fragment();
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, Intro).commit();
@@ -52,7 +56,13 @@ public class Investment_Guide_Activity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, Result).commit();
     }
+/*
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
 
+    }
+*/
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();

@@ -21,6 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import dk.pension_consulting.Investment_Guide_Activity;
+import dk.pension_consulting.PrefManager;
 import dk.pension_consulting.R;
 
 /**
@@ -29,9 +30,11 @@ import dk.pension_consulting.R;
 
 public class Investment_Intro_Fragment extends Fragment implements View.OnClickListener {
 
-    private TabLayout tabs;
+    private PrefManager prefManager;
+
     private LinearLayout dotsLayout;
     private Button next, previous;
+    private TextView title, desc;
     private TextView [] dots;
     private ProgressBar progressBar;
 
@@ -46,12 +49,16 @@ public class Investment_Intro_Fragment extends Fragment implements View.OnClickL
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_investment_viewpager, container, false);
 
+        prefManager = new PrefManager(this.getActivity());
+
         RelativeLayout Rlayout = (RelativeLayout) view.findViewById(R.id.content);
         Rlayout.setBackgroundColor(getResources().getColor(R.color.bg_screen1));
 
         viewPagerIntro = view.findViewById(R.id.view_pager);
 
-        tabs = view.findViewById(R.id.tabs);
+        title = view.findViewById(R.id.slide_title);
+        desc = view.findViewById(R.id.slide_desc);
+
         dotsLayout = view.findViewById(R.id.layoutDots);
         progressBar = view.findViewById(R.id.progressBar);
         next = view.findViewById(R.id.next_button);
@@ -80,6 +87,7 @@ public class Investment_Intro_Fragment extends Fragment implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.previous_button:
+                prefManager.setFirstTimeLaunch(false);
                 ((Investment_Guide_Activity)getActivity()).goToGuide();
                 break;
             case R.id.next_button:
@@ -87,6 +95,7 @@ public class Investment_Intro_Fragment extends Fragment implements View.OnClickL
                 if (current < layout.length) {
                     viewPagerIntro.setCurrentItem(current);
                 } else {
+                    prefManager.setFirstTimeLaunch(false);
                     ((Investment_Guide_Activity)getActivity()).goToGuide();                }
                 break;
         }
@@ -97,7 +106,6 @@ public class Investment_Intro_Fragment extends Fragment implements View.OnClickL
         previous.setText(R.string.Skip);
         next.setText(R.string.Next);
 
-        tabs.setVisibility(View.GONE);
         progressBar.setVisibility(View.GONE);
 
         previous.setOnClickListener(this);
@@ -139,9 +147,17 @@ public class Investment_Intro_Fragment extends Fragment implements View.OnClickL
             addBottomDots(position);
 
             if (position == layout.length - 1) {
+                if (title != null) {
+                    title.setText(R.string.Slide_title2);
+                    desc.setText(R.string.Slide_desc2);
+                }
+
                 next.setText(getString(R.string.GotIt));
                 previous.setVisibility(View.GONE);
             } else {
+                title.setText(R.string.Slide_title1);
+                desc.setText(R.string.Slide_desc1);
+
                 next.setText(getString(R.string.Next));
                 previous.setVisibility(View.VISIBLE);
             }
@@ -165,6 +181,12 @@ public class Investment_Intro_Fragment extends Fragment implements View.OnClickL
 
             View view = layoutInflater.inflate(layout[position], container, false);
             container.addView(view);
+
+            title = view.findViewById(R.id.slide_title);
+            desc = view.findViewById(R.id.slide_desc);
+
+            title.setText(R.string.Slide_title1);
+            desc.setText(R.string.Slide_desc1);
 
             return view;
         }

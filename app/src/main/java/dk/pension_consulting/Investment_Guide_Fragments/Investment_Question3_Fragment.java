@@ -26,7 +26,7 @@ public class Investment_Question3_Fragment extends Fragment implements View.OnCl
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_investment_question_portrait, container, false);
+        View view = inflater.inflate(R.layout.frag_investment_question, container, false);
 
         prefManager = new PrefManager(this.getActivity());
 
@@ -44,10 +44,10 @@ public class Investment_Question3_Fragment extends Fragment implements View.OnCl
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.radioButton2:
+            case R.id.radioButton1:
                 prefManager.setInvestmentValue3(5);
                 break;
-            case R.id.radioButton3:
+            case R.id.radioButton2:
                 prefManager.setInvestmentValue3(3);
                 break;
         }
@@ -59,6 +59,14 @@ public class Investment_Question3_Fragment extends Fragment implements View.OnCl
         Answer2.setText(R.string.Answer3_2);
         Answer3.setVisibility(View.GONE);
         Answer4.setVisibility(View.GONE);
+
+        if (prefManager.getInvestmentValue3() != 0) {
+            if (prefManager.getInvestmentValue3() == 5) {
+                Answer1.setChecked(true);
+            } else if (prefManager.getInvestmentValue3() == 3) {
+                Answer2.setChecked(true);
+            }
+        }
 
         Answer1.setOnClickListener(this);
         Answer2.setOnClickListener(this);

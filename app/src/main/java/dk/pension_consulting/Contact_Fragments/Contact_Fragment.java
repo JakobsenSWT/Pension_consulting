@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import dk.pension_consulting.R;
 
@@ -27,22 +28,20 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
 
     private String name, mail, subject, comment;
 
+    private TextView text;
     private EditText setName, setSubject, setComment;
     private Button sendButton;
     private Spinner mySpinner;
     private ArrayAdapter<String> myAdapter;
-
-
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_contact, container, false);
 
-        TextView text = view.findViewById(R.id.textView2);
-        text.setText(Html.fromHtml(getString(R.string.Contact_txt)));
+        text = view.findViewById(R.id.textView2);
 
-        sendButton = view.findViewById(R.id.button2);
+        sendButton = view.findViewById(R.id.send_button);
 
         setName = view.findViewById(R.id.etName);
         setSubject = view.findViewById(R.id.etMail);
@@ -54,7 +53,8 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setAdapter(myAdapter);
 
-        retrieveData(savedInstanceState);
+        Bundle bundle = this.getArguments();
+        retrieveData(bundle);
 
         startLayout();
 
@@ -88,6 +88,9 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
     }
 
     public void startLayout () {
+        text.setText(Html.fromHtml(getString(R.string.Contact_txt)));
+
+        sendButton.setText(R.string.Send);
         sendButton.setOnClickListener(this);
     }
 
@@ -100,16 +103,15 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
 
     public void retrieveData (Bundle dataMap) {
         if (dataMap != null) {
-            String s = dataMap.getString("Result_score");
+            Toast.makeText(this.getContext(), "Dit result bliver vedhæftet", Toast.LENGTH_SHORT).show();
+            float f = dataMap.getFloat("Result_score");
             int i = dataMap.getInt("Investment_experience");
 
-            comment = "Result score: " + s +
+            comment = "Result score: " + f +
                     "\nInvestment experience: " + i +
                     "\n\n";
         }
     }
-
-
 
     public void sendMessageWithIntent() {
 
@@ -122,8 +124,6 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
 
         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
-
-
 
     public Dialog errorDialog (int ErrorType) {
         AlertDialog dialog = new AlertDialog.Builder(getActivity())

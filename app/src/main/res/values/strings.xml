@@ -18,6 +18,8 @@
     <string name="Loaded">Loaded</string>
     <string name="Ops">Ups!</string>
 
+    <string name="Notifications">Notifikationer</string>
+
     <string name="Error_title">Ups!</string>
     <string name="Error_missing1">Du mangler at svare på et spørgsmål</string>
     <string name="Error_missing2">Du mangler at svare på to spørgsmål</string>
@@ -25,8 +27,16 @@
     <string name="Error_missingAll">Du har ikke svaret på nogle af spørgsmålene</string>
     <string name="Error_common">Noget gik galt! Prøv igen senere</string>
 
-    <string name="Slide_title">Boobies</string>
-    <string name="Slide_desc">Boobies er life! Muhaha</string>
+    <string name="Slide_title1">Kom godt i gang!</string>
+    <string name="Slide_desc1">Dette er en investerings guide
+        \nsom stiller simple spørgsmål til at
+        \nvurdere din investeringsprofil
+        \n\nTesten tager ca. 2 min.</string>
+    <string name="Slide_title2">Kontakt os</string>
+    <string name="Slide_desc2">Når har svaret på spørgsmålene
+        \nkan du kontakte os for den bedst
+        \nmulige konsultation!
+    \n\nTryk næste for at starte!</string>
 
     <string name="Question1">Hvor stor betydning tror du din pensionsopsparing bliver for din samlede økonomi, når du går på pension?</string>
     <string name="Answer1_1">Ingen</string>
@@ -49,6 +59,11 @@
     <string name="Answer4_2">Lidt</string>
     <string name="Answer4_3">Noget</string>
     <string name="Answer4_4">Godt</string>
+
+    <string name="InvestmentProfile_low">Meget lav investeringsprofil</string>
+    <string name="InvestmentProfile_medium">Forsigtig investeringsprofil</string>
+    <string name="InvestmentProfile_average">Gennemsnitlig investeringsprofil</string>
+    <string name="InvestmentProfile_high">Risiko betonet investeringsprofil</string>
 
     <string name="Contact_txt">
         <![CDATA[
@@ -80,7 +95,6 @@
     <string name="InvalidMailTxt">Den mail du har indtastet er ugyldig.\n
         Tjek venligst at den er indtastet korrekt.</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="infotxt">
