@@ -23,8 +23,6 @@ public class Investment_Result_Fragment extends Fragment implements View.OnClick
 
     private PrefManager prefManager;
 
-    private Fragment contact;
-
     private TextView resultText;
     private Button previous, send;
 
