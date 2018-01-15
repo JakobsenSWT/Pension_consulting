@@ -3,14 +3,18 @@ package dk.pension_consulting;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Handler;
+import android.os.HardwarePropertiesManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telecom.CallScreeningService;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ogaclejapan.arclayout.ArcLayout;
@@ -22,6 +26,8 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
     private PrefManager prefManager;
 
     ImageButton News, Guide, Contact, Info, Settings;
+
+    ImageView smallcircle, largecircle;
 
     private Handler mHandler = new Handler();
 
@@ -50,26 +56,37 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
         Info = findViewById(R.id.imageButton_logoRings);
         Info.setOnClickListener(this);
 
+        smallcircle = findViewById(R.id.semicirclewhite);
+        largecircle = findViewById(R.id.semicirclered);
+
         arcLayout = findViewById(R.id.arc_layout);
+
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
+
 
         //XLarge
         if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) ==
                 Configuration.SCREENLAYOUT_SIZE_XLARGE) {
-
+            setScreenXLarge();
         }
 
         //Large
         else if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) ==
                 Configuration.SCREENLAYOUT_SIZE_LARGE) {
-
+            setScreenLarge();
             }
+
+        //3.2" screen
+        else if (dpHeight == 480) {
+            setScreen32();
+        }
 
 
         //Small
         else if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) ==
                 Configuration.SCREENLAYOUT_SIZE_SMALL) {
-
-            arcLayout.setAxisRadius(100);
+            setScreenSmall();
         }
 
     }
@@ -204,6 +221,38 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
         else if (view == Settings) {
             Settings.startAnimation(myAnim);
         }
+    }
+
+    private void setScreenXLarge() {
+        arcLayout.setAxisRadius(400);
+        smallcircle.getLayoutParams().width=380;
+        smallcircle.getLayoutParams().height=760;
+        largecircle.getLayoutParams().width=420;
+        largecircle.getLayoutParams().height=840;
+    }
+
+    private void setScreenLarge() {
+        arcLayout.setAxisRadius(300);
+        smallcircle.getLayoutParams().width=290;
+        smallcircle.getLayoutParams().height=580;
+        largecircle.getLayoutParams().width=310;
+        largecircle.getLayoutParams().height=620;
+    }
+
+    private void setScreen32() {
+        arcLayout.setAxisRadius(150);
+        smallcircle.getLayoutParams().width=140;
+        smallcircle.getLayoutParams().height=280;
+        largecircle.getLayoutParams().width=160;
+        largecircle.getLayoutParams().height=320;
+    }
+
+    private void setScreenSmall() {
+        arcLayout.setAxisRadius(100);
+        smallcircle.getLayoutParams().width=90;
+        smallcircle.getLayoutParams().height=180;
+        largecircle.getLayoutParams().width=110;
+        largecircle.getLayoutParams().height=220;
     }
 
 

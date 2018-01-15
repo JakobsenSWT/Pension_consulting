@@ -103,13 +103,13 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
 
     public void retrieveData (Bundle dataMap) {
         if (dataMap != null) {
-            Toast.makeText(this.getContext(), "Dit result bliver vedhæftet", Toast.LENGTH_SHORT).show();
             float f = dataMap.getFloat("Result_score");
             int i = dataMap.getInt("Investment_experience");
-
-            comment = "Result score: " + f +
-                    "\nInvestment experience: " + i +
-                    "\n\n";
+            if (f != 0 && i != 0) {
+                comment = "Result score: " + f +
+                        "\nInvestment experience: " + i +
+                        "\n\n";
+            }
         }
     }
 
