@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/semicirclered"
-        android:layout_width="210dp"
-        android:layout_height="420dp"
+        android:layout_width="130dp"
+        android:layout_height="260dp"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:background="@drawable/semicirclerightred"
@@ -25,8 +25,8 @@
 
     <ImageView
         android:id="@+id/semicirclewhite"
-        android:layout_width="190dp"
-        android:layout_height="380dp"
+        android:layout_width="110dp"
+        android:layout_height="220dp"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:adjustViewBounds="false"
@@ -67,11 +67,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    </FrameLayout>
 
     <com.ogaclejapan.arclayout.ArcLayout
         android:id="@+id/arc_layout"
@@ -79,7 +74,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        app:arc_axisRadius="200dp"
+        app:arc_axisRadius="120dp"
         app:arc_freeAngle="false"
         app:arc_origin="right"
         app:arc_radius="200dp"
@@ -91,8 +86,8 @@
 
         <ImageButton
             android:id="@+id/settings_btn"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/buttonshape"
             android:padding="15dp"
             android:scaleType="centerCrop"
@@ -106,8 +101,8 @@
 
         <ImageButton
             android:id="@+id/disp_btn"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/buttonshape"
             android:padding="15dp"
             android:scaleType="centerCrop"
@@ -121,8 +116,8 @@
 
         <ImageButton
             android:id="@+id/guide_btn"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/buttonshapeguide"
             android:padding="15dp"
             android:scaleType="centerCrop"
@@ -141,8 +136,8 @@
 
         <ImageButton
             android:id="@+id/Info_btn"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/buttonshape"
             android:padding="15dp"
             android:scaleType="centerCrop"
@@ -156,8 +151,8 @@
 
         <ImageButton
             android:id="@+id/news_btn"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/buttonshape"
             android:padding="15dp"
             android:scaleType="centerCrop"
