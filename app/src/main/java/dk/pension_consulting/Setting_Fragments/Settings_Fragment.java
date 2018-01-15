@@ -34,8 +34,6 @@ public class Settings_Fragment extends Fragment implements AdapterView.OnItemCli
         add("Hjælp");
     }};
 
-
-    @SuppressLint("ResourceType")
     @Nullable
     @Override
     public View onCreateView (LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstance) {
