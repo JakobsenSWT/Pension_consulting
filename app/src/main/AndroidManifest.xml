@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dk.pension_consulting">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -20,9 +20,11 @@
         </activity>
         <activity android:name=".News_Activity" />
         <activity android:name=".Investment_Guide_Activity" />
-        <activity android:name=".Info_Activity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".Info_Activity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Settings_Activity" />
+        <activity android:name=".Advice_Activity"></activity>
     </application>
 
 </manifest>

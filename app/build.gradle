@@ -32,7 +32,6 @@ dependencies {
     compile 'com.ogaclejapan.arclayout:library:1.1.0@aar'
     compile 'com.android.support:design:26.1.0'
     compile 'com.andkulikov:transitionseverywhere:1.7.8'
-    compile 'com.unstoppable:submitbutton:1.1.3'
     implementation files('libs/javax.mail.jar')
 }
 apply plugin: 'com.google.gms.google-services'
