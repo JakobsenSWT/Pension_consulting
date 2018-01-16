@@ -43,8 +43,8 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
     private Spinner mySpinner;
     private ArrayAdapter<String> myAdapter;
 
-    static final String username = "Jakobsen1608.tj@gmail.com";
-    static final String password = "linje1993";
+    static final String username = "example@gmail.com";
+    static final String password = "example";
 
     @Nullable
     @Override
