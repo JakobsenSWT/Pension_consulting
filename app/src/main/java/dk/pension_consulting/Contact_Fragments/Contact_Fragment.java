@@ -16,7 +16,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import dk.pension_consulting.R;
 
@@ -33,6 +42,9 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
     private Button sendButton;
     private Spinner mySpinner;
     private ArrayAdapter<String> myAdapter;
+
+    static final String username = "Jakobsen1608.tj@gmail.com";
+    static final String password = "linje1993";
 
     @Nullable
     @Override
@@ -61,7 +73,7 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
-    public void onClick (View view) {
+    public void onClick(View view) {
         if (view == sendButton) {
 
             setVariables();
@@ -69,12 +81,18 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
             if (!name.equals("")) {
                 if (!mail.equals("")) {
                     try {
-                        String [] mailPart = mail.split("@");
-                        if (mailPart[1].equalsIgnoreCase("hotmail.com") || mailPart[1].equalsIgnoreCase("gmail.com") ||
-                                mailPart[1].equalsIgnoreCase("live.dk") || mailPart[1].equalsIgnoreCase("yahoo.com")) {
+                        String[] mailPart = mail.split("@");
+/*                        if (mailPart[1].equalsIgnoreCase("gmail.com")) {
+                            sendMessageWithSMTP();
+                        } else
+*/                            if (mailPart[1].equalsIgnoreCase("hotmail.com") ||
+                                    mailPart[1].equalsIgnoreCase("gmail.com") ||
+                                    mailPart[1].equalsIgnoreCase("live.dk") ||
+                                    mailPart[1].equalsIgnoreCase("yahoo.com")) {
 
                             sendMessageWithIntent();
                         }
+
                     } catch (Exception e) {
                         errorDialog(3).show();
                     }
@@ -87,21 +105,21 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    public void startLayout () {
+    public void startLayout() {
         text.setText(Html.fromHtml(getString(R.string.Contact_txt)));
 
         sendButton.setText(R.string.Send);
         sendButton.setOnClickListener(this);
     }
 
-    public void setVariables () {
+    public void setVariables() {
         name = setName.getText().toString();
         mail = setSubject.getText().toString();
         subject = mySpinner.getSelectedItem().toString();
         comment += setComment.getText().toString();
     }
 
-    public void retrieveData (Bundle dataMap) {
+    public void retrieveData(Bundle dataMap) {
         if (dataMap != null) {
             float f = dataMap.getFloat("Result_score");
             int i = dataMap.getInt("Investment_experience");
@@ -125,7 +143,7 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
 
-    public Dialog errorDialog (int ErrorType) {
+    public Dialog errorDialog(int ErrorType) {
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
                 .create();
         dialog.setCancelable(false);
@@ -153,4 +171,46 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
         });
         return dialog;
     }
+
+    //Google SMTP connection. Can only send @gmail
+    public void sendMessageWithSMTP () {
+
+        try {
+            Message message = createEmail(name, mail, subject, comment);
+            Transport.send(message);
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public static MimeMessage createEmail(String to, String from, String subject, String bodyText)
+            throws MessagingException {
+
+        Properties props = new Properties();
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+
+        MimeMessage email = new MimeMessage(session);
+
+        email.setFrom(new InternetAddress(from));
+        email.addRecipient(javax.mail.Message.RecipientType.TO,
+                new InternetAddress(to));
+        email.setSubject(subject);
+        email.setText(bodyText);
+
+        return email;
+    }
+
+
+
 }
