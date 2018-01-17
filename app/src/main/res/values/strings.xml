@@ -60,10 +60,12 @@
     <string name="Answer4_3">Noget</string>
     <string name="Answer4_4">Godt</string>
 
+    <string name="YourProfile">Din investerings profil er: </string>
     <string name="InvestmentProfile_low">Meget lav investeringsprofil</string>
     <string name="InvestmentProfile_medium">Forsigtig investeringsprofil</string>
     <string name="InvestmentProfile_average">Gennemsnitlig investeringsprofil</string>
     <string name="InvestmentProfile_high">Risiko betonet investeringsprofil</string>
+    <string name="ForwardResult">Tryk send for at videresende dine resultater og aftale et personligt møde.</string>
 
     <string name="Contact_txt">
         <![CDATA[
