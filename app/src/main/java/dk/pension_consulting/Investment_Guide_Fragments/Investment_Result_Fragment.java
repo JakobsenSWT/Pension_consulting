@@ -1,10 +1,13 @@
 package dk.pension_consulting.Investment_Guide_Fragments;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +26,9 @@ public class Investment_Result_Fragment extends Fragment implements View.OnClick
 
     private PrefManager prefManager;
 
-    private TextView resultText;
+    private TextView youAre, resultText, contactUs;
     private Button previous, send;
+    private Toolbar toolbar;
 
     private float result;
 
@@ -35,10 +39,20 @@ public class Investment_Result_Fragment extends Fragment implements View.OnClick
 
         prefManager = new PrefManager(this.getActivity());
 
+        toolbar = getActivity().findViewById(R.id.toolbar_actionbar);
+
+        youAre = view.findViewById(R.id.textView_youAre);
         resultText = view.findViewById(R.id.textView_result);
+        contactUs = view.findViewById(R.id.textView_contactUs);
 
         previous = view.findViewById(R.id.previous_button);
         send = view.findViewById(R.id.send_button);
+
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.Investment_Header);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         startLayout();
         return view;
@@ -79,6 +93,10 @@ public class Investment_Result_Fragment extends Fragment implements View.OnClick
 
         prefManager.setInvestmentResult(result);
 
+        youAre.setText(R.string.YourProfile);
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            contactUs.setText(R.string.ForwardResult);
+        }
         send.setText(R.string.Send);
         send.setOnClickListener(this);
 

@@ -56,11 +56,13 @@
 
     <ImageButton
         android:id="@+id/pensionbtn"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/imageButton_logoRings"
         android:layout_marginBottom="9dp"
+        android:layout_marginEnd="90dp"
+        android:adjustViewBounds="true"
         android:scaleType="fitEnd"
         android:background="@null"
         app:layout_constraintBottom_toBottomOf="parent"
