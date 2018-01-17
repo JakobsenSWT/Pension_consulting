@@ -41,7 +41,7 @@
 
 
     <ImageButton
-        android:id="@+id/imageView4"
+        android:id="@+id/pensionbtn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -91,7 +91,7 @@
 
 
         <ImageButton
-            android:id="@+id/settings_btn"
+            android:id="@+id/news_btn"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:background="@drawable/buttonshape"
@@ -101,12 +101,12 @@
             android:shadowDx="0"
             android:shadowDy="0"
             android:shadowRadius="5"
-            app:srcCompat="@drawable/ic_settings"
-            tools:layout_editor_absoluteX="187dp"
-            tools:layout_editor_absoluteY="138dp" />
+            app:srcCompat="@drawable/ic_news"
+            tools:layout_editor_absoluteX="151dp"
+            tools:layout_editor_absoluteY="397dp" />
 
         <ImageButton
-            android:id="@+id/advice_btn"
+            android:id="@+id/Info_btn"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:background="@drawable/buttonshape"
@@ -116,9 +116,10 @@
             android:shadowDx="0"
             android:shadowDy="0"
             android:shadowRadius="5"
-            app:srcCompat="@drawable/ic_bonds"
-            tools:layout_editor_absoluteX="111dp"
-            tools:layout_editor_absoluteY="44dp" />
+            app:srcCompat="@drawable/ic_contact"
+            tools:layout_editor_absoluteX="197dp"
+            tools:layout_editor_absoluteY="289dp" />
+
 
         <ImageButton
             android:id="@+id/guide_btn"
@@ -141,7 +142,7 @@
             app:srcCompat="@drawable/ic_guide" />
 
         <ImageButton
-            android:id="@+id/Info_btn"
+            android:id="@+id/advice_btn"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:background="@drawable/buttonshape"
@@ -151,12 +152,12 @@
             android:shadowDx="0"
             android:shadowDy="0"
             android:shadowRadius="5"
-            app:srcCompat="@drawable/ic_contact"
-            tools:layout_editor_absoluteX="197dp"
-            tools:layout_editor_absoluteY="289dp" />
+            app:srcCompat="@drawable/ic_advice"
+            tools:layout_editor_absoluteX="111dp"
+            tools:layout_editor_absoluteY="44dp" />
 
         <ImageButton
-            android:id="@+id/news_btn"
+            android:id="@+id/settings_btn"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:background="@drawable/buttonshape"
@@ -166,9 +167,9 @@
             android:shadowDx="0"
             android:shadowDy="0"
             android:shadowRadius="5"
-            app:srcCompat="@drawable/ic_news"
-            tools:layout_editor_absoluteX="151dp"
-            tools:layout_editor_absoluteY="397dp" />
+            app:srcCompat="@drawable/ic_settings"
+            tools:layout_editor_absoluteX="187dp"
+            tools:layout_editor_absoluteY="138dp" />
 
 
     </com.ogaclejapan.arclayout.ArcLayout>
