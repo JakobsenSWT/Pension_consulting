@@ -6,8 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -22,19 +20,13 @@ public class Investment_Question2_Fragment extends Fragment implements View.OnCl
 
     private PrefManager prefManager;
 
-    private Fragment Question3;
-
     private TextView Question;
-    private RadioButton Answer1, Answer2, Answer3;
-    private Button previus, next;
-    private ProgressBar Bar;
-
-    private int InvestmentValue2;
+    private RadioButton Answer1, Answer2, Answer3, Answer4;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_investment_3answers, container, false);
+        View view = inflater.inflate(R.layout.frag_investment_question, container, false);
 
         prefManager = new PrefManager(this.getActivity());
 
@@ -43,9 +35,7 @@ public class Investment_Question2_Fragment extends Fragment implements View.OnCl
         Answer1 = view.findViewById(R.id.radioButton1);
         Answer2 = view.findViewById(R.id.radioButton2);
         Answer3 = view.findViewById(R.id.radioButton3);
-
-        previus = view.findViewById(R.id.previus_button);
-        next = view.findViewById(R.id.next_button);
+        Answer4 = view.findViewById(R.id.radioButton4);
 
         startLayout();
         return view;
@@ -55,19 +45,13 @@ public class Investment_Question2_Fragment extends Fragment implements View.OnCl
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.radioButton1:
-                this.InvestmentValue2 = 2;
+                prefManager.setInvestmentValue2(2);
                 break;
             case R.id.radioButton2:
-                this.InvestmentValue2 = 3;
+                prefManager.setInvestmentValue2(3);
                 break;
             case R.id.radioButton3:
-                this.InvestmentValue2 = 4;
-                break;
-            case R.id.previus_button:
-                break;
-            case R.id.next_button:
-                prefManager.setInvestmentValue2(this.InvestmentValue2);
-                goToNextPage();
+                prefManager.setInvestmentValue2(4);
                 break;
         }
     }
@@ -77,22 +61,20 @@ public class Investment_Question2_Fragment extends Fragment implements View.OnCl
         Answer1.setText(R.string.Answer2_1);
         Answer2.setText(R.string.Answer2_2);
         Answer3.setText(R.string.Answer2_3);
+        Answer4.setVisibility(View.GONE);
 
-        previus.setText(R.string.Previus);
-        next.setText(R.string.Next);
+        if (prefManager.getInvestmentValue2() != 0) {
+            if (prefManager.getInvestmentValue2() == 2) {
+                Answer1.setChecked(true);
+            } else if (prefManager.getInvestmentValue2() == 3) {
+                Answer2.setChecked(true);
+            } else if (prefManager.getInvestmentValue2() == 4) {
+                Answer3.setChecked(true);
+            }
+        }
 
         Answer1.setOnClickListener(this);
         Answer2.setOnClickListener(this);
         Answer3.setOnClickListener(this);
-
-        previus.setOnClickListener(this);
-        next.setOnClickListener(this);
-    }
-
-    public void goToNextPage () {
-        Question3 = new Investment_Question3_Fragment();
-
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, Question3).commit();
     }
 }

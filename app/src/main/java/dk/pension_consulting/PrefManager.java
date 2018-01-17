@@ -3,8 +3,6 @@ package dk.pension_consulting;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import dk.pension_consulting.Investment_Guide_Fragments.Investment_Result_Fragment;
-
 /**
  * Created by Thomas-PC on 3/01/2018.
  */
@@ -25,6 +23,7 @@ public class PrefManager {
     private final String Investment_Value3 = "Weight_Question3";
     private final String Investment_Knowledge = "Weight_Question4";
     private final String Investment_Result = "TheActualResult";
+    private final String NotificationKey = "NotificationOnOff";
 
 
     public PrefManager(Context context) {
@@ -43,7 +42,10 @@ public class PrefManager {
     }
 
     public void setInvestmentProgress (int currentProgress) {
-        prefsEdit.putInt(Investment_Progress, currentProgress);
+        if (currentProgress == 0) {
+            prefsEdit.putInt(Investment_Progress, currentProgress);
+        } else
+            prefsEdit.putInt(Investment_Progress, preferences.getInt(Investment_Progress, currentProgress) + 1);
         prefsEdit.commit();
     }
 
@@ -79,12 +81,12 @@ public class PrefManager {
     }
 
     public void setInvestmentKnowledge (int value) {
-        prefsEdit.putFloat(Investment_Knowledge, value);
+        prefsEdit.putInt(Investment_Knowledge, value);
         prefsEdit.commit();
     }
 
-    public float getInvestmentKnowledge () {
-        return preferences.getFloat(Investment_Knowledge, 0);
+    public int getInvestmentKnowledge () {
+        return preferences.getInt(Investment_Knowledge, 0);
     }
 
     public void setInvestmentResult (float value) {
@@ -96,4 +98,12 @@ public class PrefManager {
         return preferences.getFloat(Investment_Result, 0);
     }
 
+    public void setNotificationEnabled(Boolean value) {
+        prefsEdit.putBoolean(NotificationKey, value);
+        prefsEdit.commit();
+    }
+
+    public boolean getNotificationEnabled() {
+        return preferences.getBoolean(NotificationKey, true);
+    }
 }

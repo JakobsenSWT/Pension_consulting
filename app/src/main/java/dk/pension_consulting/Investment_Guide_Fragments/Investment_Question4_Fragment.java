@@ -6,8 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -22,19 +20,13 @@ public class Investment_Question4_Fragment extends Fragment implements View.OnCl
 
     private PrefManager prefManager;
 
-    private Fragment result_frag;
-
     private TextView Question;
     private RadioButton Answer1, Answer2, Answer3, Answer4;
-    private Button previus, next;
-    private ProgressBar Bar;
-
-    private int InvestmentKnowledge;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_investment_4answers, container, false);
+        View view = inflater.inflate(R.layout.frag_investment_question, container, false);
 
         prefManager = new PrefManager(this.getActivity());
 
@@ -45,9 +37,6 @@ public class Investment_Question4_Fragment extends Fragment implements View.OnCl
         Answer3 = view.findViewById(R.id.radioButton3);
         Answer4 = view.findViewById(R.id.radioButton4);
 
-        previus = view.findViewById(R.id.previus_button);
-        next = view.findViewById(R.id.next_button);
-
         startLayout();
         return view;
     }
@@ -56,22 +45,16 @@ public class Investment_Question4_Fragment extends Fragment implements View.OnCl
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.radioButton1:
-                this.InvestmentKnowledge = 1;
+                prefManager.setInvestmentKnowledge(1);
                 break;
             case R.id.radioButton2:
-                this.InvestmentKnowledge = 2;
+                prefManager.setInvestmentKnowledge(2);
                 break;
             case R.id.radioButton3:
-                this.InvestmentKnowledge = 3;
+                prefManager.setInvestmentKnowledge(3);
                 break;
             case R.id.radioButton4:
-                this.InvestmentKnowledge = 4;
-                break;
-            case R.id.previus_button:
-                break;
-            case R.id.next_button:
-                prefManager.setInvestmentKnowledge(InvestmentKnowledge);
-                goToNextPage();
+                prefManager.setInvestmentKnowledge(4);
                 break;
         }
     }
@@ -83,22 +66,21 @@ public class Investment_Question4_Fragment extends Fragment implements View.OnCl
         Answer3.setText(R.string.Answer4_3);
         Answer4.setText(R.string.Answer4_4);
 
-        previus.setText(R.string.Exit);
-        next.setText(R.string.Next);
+        if (prefManager.getInvestmentValue1() != 0) {
+            if (prefManager.getInvestmentKnowledge() == 1) {
+                Answer1.setChecked(true);
+            } else if (prefManager.getInvestmentKnowledge() == 2) {
+                Answer2.setChecked(true);
+            } else if (prefManager.getInvestmentKnowledge() == 3) {
+                Answer3.setChecked(true);
+            } else if (prefManager.getInvestmentKnowledge() == 4) {
+                Answer4.setChecked(true);
+            }
+        }
 
         Answer1.setOnClickListener(this);
         Answer2.setOnClickListener(this);
         Answer3.setOnClickListener(this);
         Answer4.setOnClickListener(this);
-
-        previus.setOnClickListener(this);
-        next.setOnClickListener(this);
-    }
-
-    public void goToNextPage () {
-        result_frag = new Investment_Result_Fragment();
-
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, result_frag).commit();
     }
 }
