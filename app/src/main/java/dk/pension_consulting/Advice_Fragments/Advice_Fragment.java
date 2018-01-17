@@ -55,6 +55,7 @@ public class Advice_Fragment extends android.support.v4.app.Fragment {
         AdviceTitle = new ArrayList<String>();
         AdviceText = new HashMap<String, List<String>>();
 
+
         AdviceTitle.add("Start Tidligt");
         AdviceTitle.add("Læg ikke alle dine æg i én kurv");
         AdviceTitle.add("Forsikringerne er vigtige");
