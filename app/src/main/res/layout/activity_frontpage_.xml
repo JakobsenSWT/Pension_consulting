@@ -105,7 +105,7 @@
             tools:layout_editor_absoluteY="138dp" />
 
         <ImageButton
-            android:id="@+id/disp_btn"
+            android:id="@+id/advice_btn"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:background="@drawable/buttonshape"

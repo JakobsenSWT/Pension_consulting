@@ -28,7 +28,7 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
 
     private PrefManager prefManager;
 
-    ImageButton News, Guide, Contact, Info, Settings;
+    ImageButton News, Guide, Contact, Info, Settings, Advice;
 
     ImageView smallcircle, largecircle;
 
@@ -64,6 +64,9 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
 
         Info = findViewById(R.id.imageButton_logoRings);
         Info.setOnClickListener(this);
+
+        Advice = findViewById(R.id.advice_btn);
+        Advice.setOnClickListener(this);
 
         smallcircle = findViewById(R.id.semicirclewhite);
         largecircle = findViewById(R.id.semicirclered);
@@ -165,6 +168,14 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
         }
     };
 
+    private Runnable launchAdvice = new Runnable() {
+        public void run() {
+            Advice.setEnabled(true);
+            Intent i= new Intent(getApplicationContext(), Advice_Activity.class);
+            startActivity(i);
+        }
+    };
+
     @Override
     public void onClick(View view) {
         if (view == News)
@@ -193,7 +204,7 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
 
         else if (view == Info)
         {
-            didTapButton(Info);
+       //     didTapButton(Info);
             exit();
             Intent i= new Intent(getApplicationContext(), Info_Activity.class);
             startActivity(i);
@@ -205,6 +216,14 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
             didTapButton(Settings);
             exit();
             mHandler.postDelayed(launchSettings,1000);
+        }
+
+        else if (view == Advice)
+        {
+            Advice.setEnabled(false);
+            didTapButton(Advice);
+            exit();
+            mHandler.postDelayed(launchAdvice, 1000);
         }
     }
 
@@ -229,6 +248,9 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
         }
         else if (view == Settings) {
             Settings.startAnimation(myAnim);
+        }
+        else if (view == Advice) {
+            Advice.startAnimation(myAnim);
         }
     }
 
