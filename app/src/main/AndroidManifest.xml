@@ -20,11 +20,15 @@
         </activity>
         <activity android:name=".News_Activity" />
         <activity android:name=".Investment_Guide_Activity" />
+        <activity android:name=".Advice_Activity"></activity>
         <activity
             android:name=".Info_Activity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Settings_Activity" />
-        <activity android:name=".Advice_Activity"></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="b6509b211a20c2bf0491f2948dcc803159e7b2a6" />
+
     </application>
 
 </manifest>
