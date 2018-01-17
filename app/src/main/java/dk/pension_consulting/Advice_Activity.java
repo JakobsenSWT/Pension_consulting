@@ -29,7 +29,7 @@ public class Advice_Activity extends AppCompatActivity {
     public void startfragment() {
         Fragment advice = new Advice_Fragment();
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, advice).addToBackStack(null).commit();
+                .replace(R.id.fragment_container, advice).addToBackStack(null).commit();
 
         setContentView(R.layout.activity_advice);
     }
