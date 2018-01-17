@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Properties;
 
@@ -38,13 +40,12 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
     private String name, mail, subject, comment;
 
     private TextView text;
-    private EditText setName, setSubject, setComment;
+    private EditText setName, setMail, setComment;
     private Button sendButton;
     private Spinner mySpinner;
     private ArrayAdapter<String> myAdapter;
 
-    static final String username = "example@gmail.com";
-    static final String password = "example";
+    Session session;
 
     @Nullable
     @Override
@@ -56,7 +57,7 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
         sendButton = view.findViewById(R.id.send_button);
 
         setName = view.findViewById(R.id.etName);
-        setSubject = view.findViewById(R.id.etMail);
+        setMail = view.findViewById(R.id.etMail);
         setComment = view.findViewById(R.id.etComment);
 
         mySpinner = view.findViewById(R.id.spinner);
@@ -82,10 +83,10 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
                 if (!mail.equals("")) {
                     try {
                         String[] mailPart = mail.split("@");
-/*                        if (mailPart[1].equalsIgnoreCase("gmail.com")) {
-                            sendMessageWithSMTP();
+                        if (/*mailPart[1].equalsIgnoreCase("gmail.com")*/false) {
+                            connectToSMTP(name, mail, subject, comment);
                         } else
-*/                            if (mailPart[1].equalsIgnoreCase("hotmail.com") ||
+                            if (mailPart[1].equalsIgnoreCase("hotmail.com") ||
                                     mailPart[1].equalsIgnoreCase("gmail.com") ||
                                     mailPart[1].equalsIgnoreCase("live.dk") ||
                                     mailPart[1].equalsIgnoreCase("yahoo.com")) {
@@ -114,7 +115,7 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
 
     public void setVariables() {
         name = setName.getText().toString();
-        mail = setSubject.getText().toString();
+        mail = setMail.getText().toString();
         subject = mySpinner.getSelectedItem().toString();
         comment += setComment.getText().toString();
     }
@@ -136,7 +137,7 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
         final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 
         emailIntent.setType("plain/text");
-        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"example@hotmail.com"});
+        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"example@gmail.com"});
         emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject:" + subject);
         emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Comment: " + comment + "From: " + name + " Mail: " + mail);
 
@@ -173,42 +174,67 @@ public class Contact_Fragment extends Fragment implements View.OnClickListener {
     }
 
     //Google SMTP connection. Can only send @gmail
-    public void sendMessageWithSMTP () {
-
-        try {
-            Message message = createEmail(name, mail, subject, comment);
-            Transport.send(message);
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-    public static MimeMessage createEmail(String to, String from, String subject, String bodyText)
+    public void connectToSMTP (String name, String from,  String subject, String bodyText)
             throws MessagingException {
 
-        Properties props = new Properties();
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.starttls.enable", "true");
-            props.put("mail.smtp.host", "smtp.gmail.com");
-            props.put("mail.smtp.port", "587");
+        final String username = "example@gmail.com";
+        final String password = "example";
 
-        Session session = Session.getInstance(props,
+        Properties props = new Properties();
+            props.setProperty("mail.transport.protocol", "smtp");
+            props.setProperty("mail.host", username);
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.port", "465");
+            props.put("mail.smtp.socketFactory.class",
+                    "javax.net.ssl.SSLSocketFactory");
+            props.put("mail.smtp.socketFactory.fallback", "false");
+            props.setProperty("mail.smtp.quitwait", "false");
+
+
+        session = Session.getDefaultInstance(props,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(username, password);
                     }
                 });
 
-        MimeMessage email = new MimeMessage(session);
+        SendMailWithSMTP task = new SendMailWithSMTP();
+        task.execute();
+    }
 
-        email.setFrom(new InternetAddress(from));
-        email.addRecipient(javax.mail.Message.RecipientType.TO,
-                new InternetAddress(to));
-        email.setSubject(subject);
-        email.setText(bodyText);
+    class SendMailWithSMTP extends AsyncTask <String, Void, String> {
 
-        return email;
+        @Override
+        protected void onPreExecute () {
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                Message message = new MimeMessage(session);
+
+                message.setFrom(new InternetAddress(mail));
+                message.setRecipients(Message.RecipientType.TO,
+                        InternetAddress.parse("example@gmail.com"));
+                message.setSubject(name + subject);
+                message.setContent(comment, "text/html; charset=utf-8");
+
+                Transport.send(message);
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute (String result) {
+            setName.setText("");
+            setMail.setText("");
+            setComment.setText("");
+            Toast.makeText(getContext(), "Sendt!", Toast.LENGTH_SHORT).show();
+        }
     }
 
 

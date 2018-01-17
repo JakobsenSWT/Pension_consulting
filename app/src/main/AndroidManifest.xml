@@ -23,6 +23,9 @@
         <activity android:name=".Info_Activity"
             android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".Settings_Activity" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="b6509b211a20c2bf0491f2948dcc803159e7b2a6" />
     </application>
 
 </manifest>

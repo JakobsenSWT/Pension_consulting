@@ -2,6 +2,7 @@ package dk.pension_consulting;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Handler;
 import android.os.HardwarePropertiesManager;
 import android.support.v7.app.AppCompatActivity;
@@ -17,9 +18,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.ogaclejapan.arclayout.ArcLayout;
 
 import dk.pension_consulting.Animations_Frontpage.MyBounceInterpolator;
+import io.fabric.sdk.android.Fabric;
 
 public class Frontpage_Activity extends AppCompatActivity implements View.OnClickListener {
 
@@ -33,11 +36,17 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
 
     private ArcLayout arcLayout;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_frontpage_);
+
+        boolean EMULATOR = Build.PRODUCT.contains("sdk") || Build.MODEL.contains("Emulator");
+        if (!EMULATOR) {
+            Fabric.with(this, new Crashlytics());
+        }
+
 
         prefManager = new PrefManager(this);
 
