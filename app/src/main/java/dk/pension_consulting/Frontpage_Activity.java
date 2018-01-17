@@ -212,15 +212,15 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
             Intent i= new Intent(getApplicationContext(), Info_Activity.class);
             startActivity(i);
         }
-
-        else if (view == Settings)
+//Disabled for future removal.
+/*        else if (view == Settings)
         {
             Settings.setEnabled(false);
             didTapButton(Settings);
             exit();
             mHandler.postDelayed(launchSettings,1000);
         }
-
+*/
         else if (view == Advice)
         {
             Advice.setEnabled(false);
