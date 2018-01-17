@@ -78,10 +78,7 @@
                     android:textColor="@color/textColorPrimary"
                     android:background="@color/bg_screen1"/>
 
-                <com.unstoppable.submitbuttonview.SubmitButton
-                    android:id="@+id/submitbutton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+
 
         </RelativeLayout>
 
