@@ -1,6 +1,5 @@
 package dk.pension_consulting.Contact_Fragments;
 
-
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
