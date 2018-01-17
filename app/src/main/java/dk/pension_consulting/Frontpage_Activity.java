@@ -69,7 +69,7 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
         Advice = findViewById(R.id.advice_btn);
         Advice.setOnClickListener(this);
 
-        pensionimg = findViewById(R.id.imageView4);
+        pensionimg = findViewById(R.id.pensionbtn);
         pensionimg.setOnClickListener(this);
 
         smallcircle = findViewById(R.id.semicirclewhite);
