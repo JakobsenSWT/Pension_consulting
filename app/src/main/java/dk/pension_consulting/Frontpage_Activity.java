@@ -2,6 +2,7 @@ package dk.pension_consulting;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.HardwarePropertiesManager;
@@ -28,7 +29,7 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
 
     private PrefManager prefManager;
 
-    ImageButton News, Guide, Contact, Info, Settings, Advice;
+    ImageButton News, Guide, Contact, Info, Settings, Advice, pensionimg;
 
     ImageView smallcircle, largecircle;
 
@@ -67,6 +68,9 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
 
         Advice = findViewById(R.id.advice_btn);
         Advice.setOnClickListener(this);
+
+        pensionimg = findViewById(R.id.imageView4);
+        pensionimg.setOnClickListener(this);
 
         smallcircle = findViewById(R.id.semicirclewhite);
         largecircle = findViewById(R.id.semicirclered);
@@ -204,8 +208,7 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
 
         else if (view == Info)
         {
-       //     didTapButton(Info);
-            exit();
+            didTapButton(Info);
             Intent i= new Intent(getApplicationContext(), Info_Activity.class);
             startActivity(i);
         }
@@ -224,6 +227,12 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
             didTapButton(Advice);
             exit();
             mHandler.postDelayed(launchAdvice, 1000);
+        }
+        else if (view == pensionimg)
+        {
+            didTapButton(pensionimg);
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://pensionconsult.dk"));
+            startActivity(intent);
         }
     }
 
@@ -251,6 +260,9 @@ public class Frontpage_Activity extends AppCompatActivity implements View.OnClic
         }
         else if (view == Advice) {
             Advice.startAnimation(myAnim);
+        }
+        else if (view == pensionimg) {
+            pensionimg.startAnimation(myAnim);
         }
     }
 
